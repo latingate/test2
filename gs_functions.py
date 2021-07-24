@@ -1,5 +1,5 @@
 # Gal Sarig's Functions
-# hello
+
 
 # System Functions
 # ================
