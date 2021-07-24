@@ -1,4 +1,4 @@
-# Gal Sarig's Functionsדדדדדד
+# Gal Sarig's Functions
 
 # System Functions
 # ================
