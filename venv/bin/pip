@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/galsarig/Dropbox/Python/Python Project/test 2/venv/bin/python" "$0" "$@"
+'''exec' "/Users/galsarig/Dropbox/Python/MacBookPro Projects/test 2/venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
