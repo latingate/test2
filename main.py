@@ -47,3 +47,5 @@ for record in results:
 
 if result_number == 0:
     print('No matching results')
+
+print('End of program')
