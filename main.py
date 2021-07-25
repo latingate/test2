@@ -30,11 +30,11 @@ filter_json = {
     # case-insensitive
 }
 
-sort_tuple = [('name.first', 1)]
+sort_by = [('name.first', 1)]
 
 results = db.find(
     filter=filter_json,
-    sort=sort_tuple
+    sort=sort_by
 )
 
 print("\nMongoDB query results:")
