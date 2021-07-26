@@ -57,7 +57,7 @@ def divisor(x):
 
 
 divide = divisor(2)
-print (f'\ndivide: {divide(10)}')
+print (f'\nHigher order functions\ndivide: {divide(10)}')
 
 print('End of program')
 
