@@ -49,7 +49,7 @@ if result_number == 0:
     print('No matching results')
 
 
-
+# Higher order functions
 def divisor(x):
     def dividend(y):
         return y/x
