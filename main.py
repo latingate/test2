@@ -1,5 +1,7 @@
-from pymongo import MongoClient
 from gs_functions import *
+from pymongo import MongoClient
+
+import gs_functions
 
 
 def print_hi(name2):
@@ -14,7 +16,7 @@ name = {
 }
 
 print_hi(name['first'])
-print(f'Python version {check_python_version()}')
+print(f'Python version {get_python_version()}')
 print(f'script name: {__name__}')
 print(f'file name: {__file__}')
 
@@ -30,7 +32,7 @@ filter_json = {
     # case-insensitive
 }
 
-sort_by =[('name.first', 1)]
+sort_by = [('name.first', 1)]
 
 results = db.find(
     filter=filter_json,
@@ -52,13 +54,17 @@ if result_number == 0:
 # Higher order functions
 def divisor(x):
     def dividend(y):
-        return y/x
+        return y / x
+
     return dividend
 
 
 divide = divisor(2)
-print (f'\nHigher order functions\ndivide: {divide(10)}')
+print(f'\nHigher order functions\ndivide: {divide(10)}')
+
+print(f'current date: {current_date_dd_mm_yyyy()}')
+print(f'current time: {current_time()}')
+date_object = str_to_date_object("9.5.1967")
+print(date_object)
 
 print('End of program')
-
-
