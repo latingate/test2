@@ -1,8 +1,6 @@
 from gs_functions import *
 from pymongo import MongoClient
 
-import gs_functions
-
 
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
