@@ -14,12 +14,12 @@ name = {
 }
 
 print_hi(name['first'])
+
 print(f'Python version {get_python_version()}')
 print(f'script name: {__name__}')
 print(f'file name: {__file__}')
 
 db = open_mongodb_connection()
-
 
 filter_json = {
     'name.last': 'Sarig',
