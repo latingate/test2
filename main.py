@@ -48,4 +48,17 @@ for record in results:
 if result_number == 0:
     print('No matching results')
 
+
+
+def divisor(x):
+    def dividend(y):
+        return y/x
+    return dividend
+
+
+divide = divisor(2)
+print (f'\ndivide: {divide(10)}')
+
 print('End of program')
+
+
