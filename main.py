@@ -20,7 +20,6 @@ print(f'file name: {__file__}')
 
 db = open_mongodb_connection()
 
-
 filter_json = {
     'name.last': 'Sarig',
     # 'name.first' : {$regex: /.*a.*/},
@@ -32,7 +31,7 @@ filter_json = {
     # case-insensitive
 }
 
-sort_by =[('name.first', 1)]
+sort_by = [('name.first', 1)]
 
 results = db.find(
     filter=filter_json,
@@ -54,12 +53,13 @@ if result_number == 0:
 # Higher order functions
 def divisor(x):
     def dividend(y):
-        return y/x
+        return y / x
+
     return dividend
 
 
 divide = divisor(2)
-print (f'\nHigher order functions\ndivide: {divide(10)}')
+print(f'\nHigher order functions\ndivide: {divide(10)}')
 
 # decorators & wrappers
 print('\nDecorators & Wrappers')
@@ -104,7 +104,4 @@ class Person:
 person1 = Person('gal sarig', 'CEO', 54)
 print(person1.name)
 
-
 print('End of program')
-
-
