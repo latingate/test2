@@ -61,6 +61,31 @@ def divisor(x):
 divide = divisor(2)
 print (f'\nHigher order functions\ndivide: {divide(10)}')
 
+
+# decorators & wrappers
+print('\nDecorators & Wrappers')
+def decorator(original_func):  # the outer function that gets a function as parameter
+    def wrapper():  # inner function that uses the original function but wraps it
+        print('im running before')  # work before running
+        original_func()  # original function execution
+        print('im running after')  # work after running
+
+    return wrapper
+
+@decorator
+def do_stuff():
+    print('I do stuff')
+
+do_stuff()
+
+# Instead of "@" we can do:
+# decorated = decorator(do_stuff)
+# decorated()
+
+
+
+
+
 print('End of program')
 
 
