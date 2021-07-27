@@ -20,7 +20,6 @@ print(f'file name: {__file__}')
 
 db = open_mongodb_connection()
 
-
 filter_json = {
     'name.last': 'Sarig',
     # 'name.first' : {$regex: /.*a.*/},
@@ -32,7 +31,7 @@ filter_json = {
     # case-insensitive
 }
 
-sort_by =[('name.first', 1)]
+sort_by = [('name.first', 1)]
 
 results = db.find(
     filter=filter_json,
@@ -54,16 +53,18 @@ if result_number == 0:
 # Higher order functions
 def divisor(x):
     def dividend(y):
-        return y/x
+        return y / x
+
     return dividend
 
 
 divide = divisor(2)
-print (f'\nHigher order functions\ndivide: {divide(10)}')
-
+print(f'\nHigher order functions\ndivide: {divide(10)}')
 
 # decorators & wrappers
 print('\nDecorators & Wrappers')
+
+
 def decorator(original_func):  # the outer function that gets a function as parameter
     def wrapper():  # inner function that uses the original function but wraps it
         print('im running before')  # work before running
@@ -72,9 +73,11 @@ def decorator(original_func):  # the outer function that gets a function as para
 
     return wrapper
 
+
 @decorator
 def do_stuff():
     print('I do stuff')
+
 
 do_stuff()
 
@@ -83,9 +86,23 @@ do_stuff()
 # decorated()
 
 
+# classes & dataclass module
+print('\nclasses & dataclass module')
 
+
+class Person:
+    name: str
+    job: str
+    age: int
+
+    def __init__(self, name, job, age):
+        self.name = name
+        self.job = job
+        self.age = age
+
+
+person1 = Person('gal sarig', 'CEO', 54)
+print(person1.name)
 
 
 print('End of program')
-
-
