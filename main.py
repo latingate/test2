@@ -14,7 +14,7 @@ name = {
 }
 
 print_hi(name['first'])
-print(f'Python version {check_python_version()}')
+print(f'Python version {get_python_version()}')
 print(f'script name: {__name__}')
 print(f'file name: {__file__}')
 
