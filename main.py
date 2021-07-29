@@ -104,4 +104,21 @@ class Person:
 person1 = Person('gal sarig', 'CEO', 54)
 print(person1.name)
 
+
+def decorator2(original_func):  # the outer function that gets a function as parameter
+    def wrapper2(*args, **kwargs):  # inner function that uses the original function but wraps it
+        print('\nI\'m running before')  # work before running
+        original_func(*args, **kwargs)  # original function execution
+        print('I\'m running after')  # work after running
+
+    return wrapper2  # return edited function
+
+
+@decorator2
+def do_stuff2(stuff, more_stuff):
+    print(f'I do {stuff} and {more_stuff}')
+
+
+do_stuff2('work', 'even more work')
+
 print('End of program')
