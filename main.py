@@ -1,8 +1,7 @@
 import os
-
 from pymongo import MongoClient
 from gs_functions import *
-import keyboard
+from ftplib import FTP
 
 
 def print_hi(name2):
@@ -134,6 +133,5 @@ def press_any_key():
     print('\n')
     os.system('pause')
     print('Bye')
-
 
 # press_any_key()
