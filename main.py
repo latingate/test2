@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from gs_functions import *
 import keyboard
 
+
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi {name2},\nThis is your first Python program')  # Press Ctrl+F8 to toggle the breakpoint.
@@ -24,14 +25,18 @@ db = open_mongodb_connection()
 
 filter_json = {
     'name.last': 'Sarig',
-    # 'name.first' : {$regex: /.*a.*/},
-    # 'name.first': {
-    #     '$regex': '/.*a.*/'
-    # }
-    # regex - contains 'a' ????? REGEX NOT WORKING ??????
-    # $options" :'i'
-    # case-insensitive
+    "name.first": {
+        "$regex": '/.*a.*/',
+        "$options": 'i'  # case-insensitive
+    }
 }
+# 'name.first' : {$regex: /.*a.*/},
+# 'name.first': {
+#     '$regex': '/.*a.*/'
+# }
+# regex - contains 'a' ????? REGEX NOT WORKING ??????
+# $options" :'i'
+# case-insensitive
 
 sort_by = [('name.first', 1)]
 
