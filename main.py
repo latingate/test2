@@ -2,7 +2,7 @@ import os
 
 from pymongo import MongoClient
 from gs_functions import *
-
+import keyboard
 
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
@@ -124,6 +124,8 @@ def do_stuff2(stuff, more_stuff):
 do_stuff2('work', 'even more work')
 
 # input('press enter to end of program')
-print('\n')
+# print('\n')
 os.system('pause')
+
+
 print('Bye')
