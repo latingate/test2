@@ -123,7 +123,7 @@ def decorator2(original_func):  # the outer function that gets a function as par
 @decorator2
 def do_stuff2(stuff, more_stuff):
     print(f'I do {stuff} and {more_stuff}')
-s
+
 
 do_stuff2('work', 'even more work')
 
