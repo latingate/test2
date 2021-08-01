@@ -132,7 +132,7 @@ print('\nFTP')
 ftp = FTP('ftp.galsarig.com')  # connect to host, default port
 ftp.login('latingate', 'ggal5313Y!')  # user anonymous, passwd anonymous@
 # ftp.retrlines('LIST')  # list directory contents  # print  directory contents
-ftp.cwd('galsarig.com')
+ftp.cwd('ftp_test')
 ftp.dir()
 print('current directory: ' + ftp.pwd())
 
