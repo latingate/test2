@@ -128,8 +128,12 @@ def do_stuff2(stuff, more_stuff):
 
 do_stuff2('work', 'even more work')
 
-# input('press enter to end of program')
-print('\n')
-os.system('pause')
 
-print('Bye')
+def press_any_key():
+    # input('press enter to end of program')
+    print('\n')
+    os.system('pause')
+    print('Bye')
+
+
+# press_any_key()
