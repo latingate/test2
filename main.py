@@ -1,3 +1,5 @@
+import os
+
 from pymongo import MongoClient
 from gs_functions import *
 
@@ -121,7 +123,7 @@ def do_stuff2(stuff, more_stuff):
 
 do_stuff2('work', 'even more work')
 
-print('press enter to end of program')
-a=input()
+# input('press enter to end of program')
+print('\n')
+os.system('pause')
 print('Bye')
-
