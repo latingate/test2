@@ -24,9 +24,9 @@ print(f'file name: {__file__}')
 db = open_mongodb_connection()
 
 filter_json = {
-    'name.last': 'שריג',
+    'name.last': 'Sarig',
     "name.first": {
-        "$regex": '.*ל.*',  # includes
+        "$regex": '.*a.*',  # includes
         "$options": 'i'  # case insensitive
     }
 }
