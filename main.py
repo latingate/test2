@@ -124,7 +124,7 @@ def do_stuff2(stuff, more_stuff):
 do_stuff2('work', 'even more work')
 
 # input('press enter to end of program')
-# print('\n')
+print('\n')
 os.system('pause')
 
 print('Bye')
