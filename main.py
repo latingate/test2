@@ -26,8 +26,8 @@ db = open_mongodb_connection()
 filter_json = {
     'name.last': 'Sarig',
     "name.first": {
-        "$regex": '/.*a.*/',
-        "$options": 'i'  # case-insensitive
+        "$regex": '.*al.*',
+        "$options": 'i'  # case insensitive
     }
 }
 # 'name.first' : {$regex: /.*a.*/},
