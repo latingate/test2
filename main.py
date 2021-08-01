@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from gs_functions import *
 
-#test
+
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi {name2},\nThis is your first Python program')  # Press Ctrl+F8 to toggle the breakpoint.
