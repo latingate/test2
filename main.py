@@ -124,8 +124,13 @@ def decorator2(original_func):  # the outer function that gets a function as par
 def do_stuff2(stuff, more_stuff):
     print(f'I do {stuff} and {more_stuff}')
 
-
+print('\nCreate a file in a local folder')
 do_stuff2('work', 'even more work')
+f = open("c:/tmp/tst.txt", 'w')
+f.write("Hello. I've created a file")  # writing to file
+f = open('C:/tmp/tst.txt', 'r')
+print(f.read())
+f.close()
 
 print('\nFTP')
 
@@ -136,7 +141,7 @@ ftp.cwd('ftp_test')
 ftp.dir()
 print('current directory: ' + ftp.pwd())
 ftp.close()
-ftp.quit()
+# ftp.quit()
 
 
 def press_any_key():
