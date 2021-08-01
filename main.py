@@ -121,4 +121,7 @@ def do_stuff2(stuff, more_stuff):
 
 do_stuff2('work', 'even more work')
 
-print('End of program')
+print('press enter to end of program')
+a=input()
+print('Bye')
+
