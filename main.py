@@ -135,7 +135,8 @@ ftp.login('latingate', 'ggal5313Y!')  # user anonymous, passwd anonymous@
 ftp.cwd('ftp_test')
 ftp.dir()
 print('current directory: ' + ftp.pwd())
-
+ftp.close()
+ftp.quit()
 
 
 def press_any_key():
