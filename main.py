@@ -2,6 +2,7 @@ import os
 from pymongo import MongoClient
 from gs_functions import *
 from ftplib import FTP
+import logging
 
 
 def print_hi(name2):
@@ -127,13 +128,30 @@ def do_stuff2(stuff, more_stuff):
 
 do_stuff2('work', 'even more work')
 
-
 print('\nCreate a file in a local folder')
 f = open("c:/tmp/tst.txt", 'w')
 f.write("Hello. I've created a file")  # writing to file
 f = open('C:/tmp/tst.txt', 'r')
 print(f.read())
 f.close()
+
+
+def logger_add_and_dosplay():
+    loggerfilename = 'testlogger.log'
+    if os.path.exists(loggerfilename):
+        os.remove(loggerfilename)
+    logging.basicConfig(filename=loggerfilename, encoding='utf-8', level=logging.DEBUG)
+    logging.debug('This message should go to the log file')
+    logging.info('So should this')
+    logging.warning('And this, too')
+    logging.error('And non-ASCII stuff, too, like Øresund and Malmö')
+    print('\nDisplay logger file')
+    f = open(loggerfilename, 'r')
+    print(f.read())
+    f.close()
+
+
+logger_add_and_dosplay()
 
 print('\nFTP')
 
