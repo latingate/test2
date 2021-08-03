@@ -166,7 +166,7 @@ ftp.cwd('/robot')
 file_to_be_uploaded = open('tst.txt','rb')
 # for line in file_to_be_uploaded:
 #     print(line)
-ftp.storlines('STOR uploaded_testfile.txt', file_to_be_uploaded)
+ftp.storbinary('STOR uploaded_testfile.txt', file_to_be_uploaded)
 
 file_downloaded = open('tst_downloaded.txt', "wb")
 ftp.retrbinary('RETR uploaded_testfile.txt', file_downloaded.write)
