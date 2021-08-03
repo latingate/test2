@@ -4,6 +4,7 @@ from gs_functions import *
 from ftplib import FTP
 import logging
 
+
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi {name2},\nThis is your first Python program')  # Press Ctrl+F8 to toggle the breakpoint.
@@ -154,10 +155,23 @@ logger_add_and_dosplay()
 
 print('\nFTP')
 
-ftp = FTP('ftp.galsarig.com')  # connect to host, default port
-ftp.login('latingate', 'ggal5313Y!')  # user anonymous, passwd anonymous@
+# ftp = FTP('ftp.galsarig.com')  # connect to host, default port
+# ftp.login('latingate', 'ggal5313Y!')  # user anonymous, passwd anonymous@
+# ftp.cwd('ftp_test')
+
+ftp = FTP('172.20.2.142')  # connect to host, default port
+ftp.login('gal', 'nhfk7@G')  # user anonymous, passwd anonymous@
+ftp.cwd('/robot')
+
+file_to_be_uploaded = open('tst.txt','rb')
+# for line in file_to_be_uploaded:
+#     print(line)
+ftp.storlines('STOR uploaded_testfile.txt', file_to_be_uploaded)
+
+file_downloaded = open('tst_downloaded.txt', "wb")
+ftp.retrbinary('RETR uploaded_testfile.txt', file_downloaded.write)
+
 # ftp.retrlines('LIST')  # list directory contents  # print  directory contents
-ftp.cwd('ftp_test')
 ftp.dir()
 print('current directory: ' + ftp.pwd())
 ftp.close()
