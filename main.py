@@ -2,8 +2,37 @@ import os
 from pymongo import MongoClient
 from gs_functions import *
 from ftplib import FTP
+from dataclasses import dataclass
 import logging
 
+
+def stop():
+    sys.exit("program stopped by stop() functions - GS")
+
+
+def press_any_key():
+    # input('press enter to end of program')
+    print('\n')
+    os.system('pause')
+    print('Bye')
+
+
+@dataclass
+class Person:
+    name: str
+    job: str
+    age: int
+    spouse: str
+
+
+person1 = Person('gal sarig', 'CEO', 54, 'sigal')
+person2 = Person(job='CEO', spouse='sigal', age=54, name='gal sarig')
+# print(person1.name)
+print(vars(person1))
+
+
+press_any_key()
+stop()
 
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
@@ -97,21 +126,6 @@ do_stuff()
 print('\nclasses & dataclass module')
 
 
-class Person:
-    name: str
-    job: str
-    age: int
-
-    def __init__(self, name, job, age):
-        self.name = name
-        self.job = job
-        self.age = age
-
-
-person1 = Person('gal sarig', 'CEO', 54)
-print(person1.name)
-
-
 def decorator2(original_func):  # the outer function that gets a function as parameter
     def wrapper2(*args, **kwargs):  # inner function that uses the original function but wraps it
         print('\nI\'m running before')  # work before running
@@ -163,7 +177,7 @@ ftp = FTP('172.20.2.142')  # connect to host, default port
 ftp.login('gal', 'nhfk7@G')  # user anonymous, passwd anonymous@
 ftp.cwd('/robot')
 
-file_to_be_uploaded = open('tst.txt','rb')
+file_to_be_uploaded = open('tst.txt', 'rb')
 # for line in file_to_be_uploaded:
 #     print(line)
 ftp.storbinary('STOR uploaded_testfile.txt', file_to_be_uploaded)
@@ -176,14 +190,7 @@ ftp.dir()
 print('current directory: ' + ftp.pwd())
 ftp.close()
 
-
 # ftp.quit()
 
-
-def press_any_key():
-    # input('press enter to end of program')
-    print('\n')
-    os.system('pause')
-    print('Bye')
 
 # press_any_key()
