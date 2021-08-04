@@ -24,15 +24,19 @@ class Person:
     age: int
     spouse: str
 
+    def __str__(self):
+        return (f'{self.name} {self.job} age:{self.age} spouse: {self.spouse}')
+
 
 person1 = Person('gal sarig', 'CEO', 54, 'sigal')
 person2 = Person(job='CEO', spouse='sigal', age=54, name='gal sarig')
 # print(person1.name)
 print(vars(person1))
-
+print(person1)
 
 press_any_key()
 stop()
+
 
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
