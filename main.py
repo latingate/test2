@@ -7,7 +7,8 @@ import logging
 
 
 def stop():
-    sys.exit("program stopped by stop() functions - GS")
+    # press_any_key()
+    sys.exit("\n********************\nGS - program stopped by stop() functions")
 
 
 def press_any_key():
@@ -28,13 +29,15 @@ class Person:
         return (f'{self.name} {self.job} age:{self.age} spouse: {self.spouse}')
 
 
+# classes & dataclass module
+print('\nclasses & dataclass module')
+
 person1 = Person('gal sarig', 'CEO', 54, 'sigal')
 person2 = Person(job='CEO', spouse='sigal', age=54, name='gal sarig')
 # print(person1.name)
 print(vars(person1))
 print(person1)
 
-press_any_key()
 stop()
 
 
@@ -121,13 +124,10 @@ def do_stuff():
 
 do_stuff()
 
+
 # Instead of "@" we can do:
 # decorated = decorator(do_stuff)
 # decorated()
-
-
-# classes & dataclass module
-print('\nclasses & dataclass module')
 
 
 def decorator2(original_func):  # the outer function that gets a function as parameter
@@ -173,13 +173,14 @@ logger_add_and_dosplay()
 
 print('\nFTP')
 
-# ftp = FTP('ftp.galsarig.com')  # connect to host, default port
-# ftp.login('latingate', 'ggal5313Y!')  # user anonymous, passwd anonymous@
-# ftp.cwd('ftp_test')
+ftp = FTP('ftp.galsarig.com')  # connect to host, default port
+ftp.login('latingate', 'ggal5313Y!')  # user anonymous, passwd anonymous@
+ftp.cwd('ftp_test')
 
-ftp = FTP('172.20.2.142')  # connect to host, default port
-ftp.login('gal', 'nhfk7@G')  # user anonymous, passwd anonymous@
-ftp.cwd('/robot')
+# hellmann's robot ftp (internal IP)
+# ftp = FTP('172.20.2.142')  # connect to host, default port
+# ftp.login('gal', 'nhfk7@G')  # user anonymous, passwd anonymous@
+# ftp.cwd('/robot')
 
 file_to_be_uploaded = open('tst.txt', 'rb')
 # for line in file_to_be_uploaded:
