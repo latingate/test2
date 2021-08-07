@@ -38,7 +38,7 @@ person2 = Person(job='CEO', spouse='sigal', age=54, name='gal sarig')
 print(vars(person1))
 print(person1)
 
-stop()
+# stop()
 
 
 def print_hi(name2):
