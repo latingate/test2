@@ -1,0 +1,14 @@
+{% extends "base_template.html" %}
+
+{% set title = 'File Upload' %}
+
+{% block head_contents %}
+{{ dropzone.load() }}
+{{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+{% endblock head_contents %}
+
+{% block contents %}
+<h2>Upload multiple files - drag & drop</h2>
+{{ dropzone.create(action_view='upload') }}
+<br/><br/>
+{% endblock contents %}
