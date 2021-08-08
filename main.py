@@ -58,6 +58,8 @@ print(f'Python version {get_python_version()}')
 print(f'script name: {__name__}')
 print(f'file name: {__file__}')
 
+
+# PyMongo tutorial: https://pymongo.readthedocs.io/en/stable/tutorial.html
 print('\nMongoDB')
 db = open_mongodb_connection()
 
@@ -71,6 +73,7 @@ new_db_doc = {
 }
 
 db.insert_one(new_db_doc)
+print('new document added to DB')
 
 filter_json = {
     'name.last': 'Sarig',

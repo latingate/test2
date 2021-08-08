@@ -25,9 +25,8 @@ app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*'
 app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
 
 # Uploads settings
-# upload_folder = 'uploads'
-# app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + upload_folder
-app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/uploads'
+upload_folder = 'uploads'
+app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/' + upload_folder
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)  # set maximum file size, default is 16MB
@@ -85,6 +84,9 @@ def upload():
             file_urls.append(photos.url(filename))
 
         session['file_urls'] = file_urls
+        i = 0
+        file_urls_dic = {"pic" + str(++i): url for url in file_urls}
+        print(file_urls_dic)
         return "uploading..."
     # return dropzone template on GET request
     return render_template('upload.html')
