@@ -38,6 +38,7 @@ person2 = Person(job='CEO', spouse='sigal', age=54, name='gal sarig')
 print(vars(person1))
 print(person1)
 
+
 # stop()
 
 
@@ -57,9 +58,19 @@ print(f'Python version {get_python_version()}')
 print(f'script name: {__name__}')
 print(f'file name: {__file__}')
 
-
 print('\nMongoDB')
 db = open_mongodb_connection()
+
+new_db_doc = {
+    "name": {
+        'first': 'New',
+        'last': 'Name',
+    },
+    'initials': 'NN',
+    'age': 54
+}
+
+db.insert_one(new_db_doc)
 
 filter_json = {
     'name.last': 'Sarig',
