@@ -58,7 +58,6 @@ print(f'Python version {get_python_version()}')
 print(f'script name: {__name__}')
 print(f'file name: {__file__}')
 
-
 # PyMongo tutorial: https://pymongo.readthedocs.io/en/stable/tutorial.html
 print('\nMongoDB')
 db = open_mongodb_connection()
@@ -69,7 +68,8 @@ new_db_doc = {
         'last': 'Name',
     },
     'initials': 'NN',
-    'age': 54
+    'age': 54,
+    'pics': ['location1', 'location2', 'location 3']
 }
 
 db.insert_one(new_db_doc)
