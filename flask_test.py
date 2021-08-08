@@ -34,14 +34,7 @@ patch_request_class(app)  # set maximum file size, default is 16MB
 
 @app.route("/")
 def home():
-    s = '''
-        <br/>Other routes:
-        <br/><a href='/gal'>/gal</a>
-        <br/><a href='/test'>/test</a>
-        <br/><a href='/test2/Sigal Lifshitz'>/test2/Sigal Lifshitz</a>
-        <br/><a href='/upload'>/upload</a>
-    '''
-    return s
+    return render_template('home.html')
 
 
 admin_name = 'Gal Sarig'
