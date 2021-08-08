@@ -8,9 +8,8 @@ import os
 # Source: https://medium.com/@dustindavignon/upload-multiple-images-with-python-flask-and-flask-dropzone-d5b821829b1d
 
 # In flask_uploads.py
-## Change:
+# Change:
 # from werkzeug import secure_filename,FileStorage
-#
 # to:
 # from werkzeug.utils import secure_filename
 # from werkzeug.datastructures import  FileStorage
