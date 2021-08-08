@@ -63,7 +63,7 @@ def template():
 app.config['SECRET_KEY'] = 'mcpYc982y3hufjWnv8'
 
 
-@app.route('/upload')
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
     # set session for image results
     if "file_urls" not in session:
