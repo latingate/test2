@@ -1,6 +1,7 @@
 {% extends "base_template.html" %}
 
 {% set title = 'File Upload' %}
+{% set page_header = 'Upload multiple files - drag & drop' %}
 
 {% block head_contents %}
 {{ dropzone.load() }}
@@ -8,7 +9,6 @@
 {% endblock head_contents %}
 
 {% block contents %}
-<h2>Upload multiple files - drag & drop</h2>
 {{ dropzone.create(action_view='upload') }}
 <br/><br/>
 {% endblock contents %}

@@ -1,14 +1,13 @@
 {% extends "base_template.html" %}
 
 {% set title = 'Title' %}
-
+{% set page_header = 'Test Page' %}
 
 {% block contents %}
-    <h2>This is Flask Test Page (template)</h2>
+    <h4>This is Flask Test Page (template)</h4>
     {% if name ==  admin_name %}
-        <h3 class="alert alert-info">hello master!!</h3>
-        <h4>you are {{ name }}, right?</h4>
+        <h5>you are {{ name }}, right?</h5>
     {% else %}
-        <h3>hello {{ name }}</h3>
+        <h5>hello {{ name }}</h5>
     {% endif %}
 {% endblock contents %}

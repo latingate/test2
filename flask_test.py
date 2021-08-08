@@ -6,7 +6,7 @@ import os
 
 # Drag & Drop upload
 # Source: https://medium.com/@dustindavignon/upload-multiple-images-with-python-flask-and-flask-dropzone-d5b821829b1d
-
+#
 # In flask_uploads.py
 # Change:
 # from werkzeug import secure_filename,FileStorage
@@ -92,7 +92,6 @@ def upload():
 
 @app.route('/upload_results')
 def upload_results():
-
     # redirect to home if no images to display
     if "file_urls" not in session or session['file_urls'] == []:
         return redirect(url_for('upload'))
