@@ -9,10 +9,10 @@ import os
 #
 # In flask_uploads.py
 # Change:
-# from werkzeug import secure_filename,FileStorage
+# from werkzeug import secure_filename, FileStorage
 # to:
 # from werkzeug.utils import secure_filename
-# from werkzeug.datastructures import  FileStorage
+# from werkzeug.datastructures import FileStorage
 
 app = Flask(__name__)
 
@@ -34,11 +34,13 @@ patch_request_class(app)  # set maximum file size, default is 16MB
 
 @app.route("/")
 def home():
-    s = "This is Gal's server"
-    s += "<br/>Other routes:"
-    s += "<br/><a href='/gal'>/gal</a>"
-    s += "<br/><a href='/test'>/test</a>"
-    s += "<br/><a href='/upload'>/upload</a>"
+    s = '''
+        <br/>Other routes:
+        <br/><a href='/gal'>/gal</a>
+        <br/><a href='/test'>/test</a>
+        <br/><a href='/test2/Sigal Lifshitz'>/test2/Sigal Lifshitz</a>
+        <br/><a href='/upload'>/upload</a>
+    '''
     return s
 
 
@@ -51,10 +53,17 @@ def gal():
 
 
 @app.route("/test")
-def template():
+def test():
     first_name = 'Gal'
     last_name = 'Sarig'
     return render_template('flask_test.html', name=first_name + ' ' + last_name, admin_name=admin_name)
+
+
+@app.route("/test2/<name1>")
+def test2(name1):
+    first_name = 'Gal'
+    last_name = 'Sarig'
+    return render_template('flask_test.html', name=first_name + ' ' + last_name, admin_name=admin_name, name1=name1)
 
 
 # secret key for session / cookies

@@ -4,6 +4,9 @@
 {% set page_header = 'Test Page' %}
 
 {% block contents %}
+    {% if name1 %}
+        <h1>passed name- {{ name1 }}</h1>
+    {%  endif %}
     <h4>This is Flask Test Page (template)</h4>
     {% if name ==  admin_name %}
         <h5>you are {{ name }}, right?</h5>
