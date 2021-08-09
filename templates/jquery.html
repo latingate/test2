@@ -1,0 +1,37 @@
+{% extends "base_template.html" %}
+
+{% set title = 'jquery' %}
+{% set page_header = 'jquery - ajax' %}
+
+{% block head_contents %}
+{% endblock %}
+
+{% block contents %}
+    <form id="calc">
+        <label>a <input name="a" id="a"></label>
+        <span>+</span>
+        <label>b <input name="b" id="b"></label>
+        <input type="submit" value="Calculate">
+    </form>
+    <span> Result: <span id="result"></span></span>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        function addSubmit(ev) {
+            ev.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: {{ url_for("_add_numbers")|tojson }},
+                data: $(this).serialize()
+            }).done(addShow);
+        }
+
+        function addShow(data) {
+            $('#result').text(data.result);
+        }
+
+        $('#calc').on('submit', addSubmit);
+        {#$('#a').on('keyup', addSubmit);#}
+        {#$('#b').on('keyup', addSubmit);#}
+    </script>
+{% endblock contents %}

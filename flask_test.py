@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, render_template, request, session, url_for
+from flask import Flask, redirect, request, render_template, request, session, url_for, jsonify
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 
@@ -105,6 +105,18 @@ def upload_results():
     session.pop('file_urls', None)
 
     return render_template('upload_results.html', file_urls=file_urls)
+
+
+@app.route("/jquery")
+def jquery():
+    return render_template('jquery.html')
+
+
+@app.route('/_add_numbers', methods=["GET"])
+def _add_numbers():
+    a = request.args.get('a', 0, type=int)
+    b = request.args.get('b', 0, type=int)
+    return jsonify(result=a + b)
 
 
 app.run(debug=True)
