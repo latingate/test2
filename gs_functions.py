@@ -17,7 +17,7 @@ def get_python_version():
 
 
 def open_mongodb_connection():
-    # # local
+    # local
     # conn = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
     # db = conn['tstdb']['tst2']
 
