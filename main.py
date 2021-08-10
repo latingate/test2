@@ -162,6 +162,7 @@ def do_stuff2(stuff, more_stuff):
 
 do_stuff2('work', 'even more work')
 
+# reate a file in a local folder (PC)
 print('\nCreate a file in a local folder')
 f = open("c:/tmp/tst.txt", 'w')
 f.write("Hello. I've created a file")  # writing to file
