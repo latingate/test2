@@ -4,6 +4,7 @@ from gs_functions import *
 from ftplib import FTP
 from dataclasses import dataclass
 import logging
+import json
 
 
 def stop():
@@ -29,6 +30,20 @@ class Person:
         return (f'{self.name} {self.job} age:{self.age} spouse: {self.spouse}')
 
 
+dict1 = {
+    'Name': 'Geeks',
+    'Name2': 'Geeks',
+    'list': ['item 1', 'item 2', 'item 3', 'item 4']
+}
+print("\nDictionary:")
+print(dict1)
+
+json_object = json.dumps(dict1, indent=4)
+print("\nDictionary converted to json:")
+print(json_object)
+
+# stop()
+
 # classes & dataclass module
 print('\nclasses & dataclass module')
 
@@ -39,12 +54,9 @@ print(vars(person1))
 print(person1)
 
 
-# stop()
-
-
 def print_hi(name2):
     # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi {name2},\nThis is your first Python program')  # Press Ctrl+F8 to toggle the breakpoint.
+    print(f'Hi {name2},\nYour name is coming from a dictionary')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
 name = {
