@@ -112,11 +112,23 @@ def jquery():
     return render_template('jquery.html')
 
 
-@app.route('/_add_numbers', methods=["GET"])
+@app.route('/_add_numbers', methods=['POST', 'GET'])
 def _add_numbers():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
+    if request.method == 'GET':
+        a = request.args.get('a')
+        b = request.args.get('b')
+        total = int(a) + int(b)
+        # another way:
+        # a = request.args.get('a', 0, int)
+        # b = request.args.get('b', 0, int)
+        # total = a + b
+
+    if request.method == 'POST':
+        a = request.form.get('a')
+        b = request.form.get('b')
+        total = int(a) + int(b)
+
+    return jsonify(result=total)
 
 
 app.run(debug=True)
