@@ -162,13 +162,25 @@ def do_stuff2(stuff, more_stuff):
 
 do_stuff2('work', 'even more work')
 
-# reate a file in a local folder (PC)
-print('\nCreate a file in a local folder')
-f = open("c:/tmp/tst.txt", 'w')
-f.write("Hello. I've created a file")  # writing to file
-f = open('C:/tmp/tst.txt', 'r')
-print(f.read())
-f.close()
+# create a file in a local folder (PC)
+s = sys.platform
+print('operation system: ' + s)
+if s == "linux" or s == "linux2":
+    # print('linux')
+    do_nothing()
+elif s == "darwin":
+    # print('OS X')
+    f = open("/Users/galsarig/Downloads/tst.txt", 'w')
+    f.write("Hello. I've created a file")  # writing to file
+    f = open('/Users/galsarig/Downloads/tst.txt', 'r')
+    print(f.read())
+    f.close()
+elif s == "win32":
+    f = open("c:/tmp/tst.txt", 'w')
+    f.write("Hello. I've created a file")  # writing to file
+    f = open('C:/tmp/tst.txt', 'r')
+    print(f.read())
+    f.close()
 
 
 def logger_add_and_dosplay():
