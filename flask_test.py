@@ -7,7 +7,6 @@ import os
 
 from gs_functions import *
 
-
 # Drag & Drop upload
 # Source: https://medium.com/@dustindavignon/upload-multiple-images-with-python-flask-and-flask-dropzone-d5b821829b1d
 #

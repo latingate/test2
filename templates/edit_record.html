@@ -1,13 +1,13 @@
 {% extends "base_template.html" %}
 
-{% set title = 'list records' %}
-{% set page_header = 'list records' %}
+{% set title = 'edit record' %}
+{% set page_header = 'edit record id= ' + id  %}
 
 {% block head_contents %}
 {% endblock %}
 
 {% block contents %}
-    {%  for document in cursor %}
+    {% for document in cursor %}
         <br/>
         {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
         <a href="/edit_record/{{ document['_id'] }}">Edit</a>
