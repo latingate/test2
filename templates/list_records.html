@@ -1,0 +1,14 @@
+{% extends "base_template.html" %}
+
+{% set title = 'list records' %}
+{% set page_header = 'list records' %}
+
+{% block head_contents %}
+{% endblock %}
+
+{% block contents %}
+    {%  for document in cursor %}
+        <br/>
+        {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
+    {% endfor %}
+{% endblock contents %}
