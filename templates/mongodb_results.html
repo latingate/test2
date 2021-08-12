@@ -1,0 +1,16 @@
+{% extends "base_template.html" %}
+
+{% set title = 'mongoDB results' %}
+{% set page_header = 'mongoDB results' %}
+
+{% block contents %}
+    {% if true or results_count>0 %}
+        <h3>no. of results:</h3>
+        <p>{{ results_count }}</p>
+        <h3>cursor results:</h3>
+        <p>{{ results_cursor }}</p>
+        <h3>results dictionary(?):</h3>
+        <p>{{ results_dictionary }}</p>
+    {% endif %}
+
+{% endblock contents %}

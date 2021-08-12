@@ -1,6 +1,8 @@
 from flask import Flask, redirect, request, render_template, request, session, url_for, jsonify
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+from pymongo import MongoClient
+from gs_functions import *
 
 import os
 
@@ -129,6 +131,27 @@ def _add_numbers():
         total = int(a) + int(b)
 
     return jsonify(result=total)
+
+
+@app.route("/mongodb/<name>")
+def mongodb_getone(name):
+    db = open_mongodb_connection()
+
+    filter_json = {
+        "name.first": name
+    }
+
+    sort_by = [('name.first', 1)]
+
+    results = db.find(
+        filter=filter_json,
+        sort=sort_by
+    )
+
+    results_dictionary = list(results)
+    results_count = results.count()
+
+    return render_template("mongodb_results.html", results_cursor=results, results_dictionary=results_dictionary, results_count=results_count)
 
 
 app.run(debug=True)
