@@ -80,7 +80,14 @@ def update_record():
         }
     }
 
-    results = db.update_one(filter_json, new_values)
+    results = db.update_one(
+        filter=filter_json,
+        update=new_values,
+        # upsert=False
+        # if upsert=True if no record found - a new one will be created
+    )
+
+
     return render_template('update_confirmation.html', user=user)
 
 
