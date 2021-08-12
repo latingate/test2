@@ -2,9 +2,11 @@ from flask import Flask, redirect, request, render_template, request, session, u
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 from pymongo import MongoClient
+import json
+import os
+
 from gs_functions import *
 
-import os
 
 # Drag & Drop upload
 # Source: https://medium.com/@dustindavignon/upload-multiple-images-with-python-flask-and-flask-dropzone-d5b821829b1d
@@ -148,10 +150,16 @@ def mongodb_getone(name):
         sort=sort_by
     )
 
-    results_dictionary = list(results)
+    results_list = list(results)
     results_count = results.count()
-
-    return render_template("mongodb_results.html", results_cursor=results, results_dictionary=results_dictionary, results_count=results_count)
+    first_record_json = str(results_list[0])
+    first_record_dump = json.dumps(first_record_json)
+    # name = first_record_dictionary["name"]
+    # print(name)
+    print('json: ' + first_record_json)
+    print('dump / dictionary ?? : ' + first_record_dump)
+    return render_template("mongodb_results.html", results_cursor=results, results_list=results_list,
+                           first_record_json=first_record_json, results_count=results_count)
 
 
 app.run(debug=True)
