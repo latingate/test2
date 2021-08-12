@@ -31,11 +31,6 @@ def list_records():
 def edit_record(user_id):
     db = open_mongodb_connection()
 
-    # filter_json = {
-    #     "name":
-    #         {"first": "Gal"}
-    # }
-
     filter_json = {
         "_id": ObjectId(user_id)
     }
@@ -52,15 +47,41 @@ def edit_record(user_id):
     user.last_name = results['name']['last']
     user.initials = results['initials']
     user.age = results['age']
-    # print(vars(user))
     return render_template('edit_record.html', user_id=user_id, user=user)
 
 
 @app.route("/update_record", methods=['POST'])
 def update_record():
-    data = request.form.get('first_name')
-    print(data)
-    return render_template('update_confirmation.html', data=data)
+    data = request.form
+    user = User_db
+    user_id = data.get('_id')
+    print(user_id)
+    user.first_name = data.get('first_name')
+    user.last_name = data.get('last_name')
+    user.initials = data.get('initials')
+    user.age = data.get('age')
+
+    db = open_mongodb_connection()
+
+    filter_json = {
+        "_id": ObjectId(user_id)
+    }
+
+    sort_by = [('_id', 1)]
+
+    new_values = {"$set":
+        {
+            "name": {
+                'first': user.first_name,
+                'last': user.last_name,
+            },
+            'initials': user.initials,
+            'age': user.age,
+        }
+    }
+
+    results = db.update_one(filter_json, new_values)
+    return render_template('update_confirmation.html', user=user)
 
 
 app.run(debug=True)

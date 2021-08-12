@@ -7,20 +7,34 @@
 {% endblock %}
 
 {% block contents %}
-    {{ user.first_name }} {{ user.last_name }}
     <br/>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <form id="edit_record" action="/update_record" method="POST">
                     <div class="form-group">
+                        <input type="hidden" name="_id" id="_id" value="{{ user_id }}">
                         <label for="first_name">First Name</label>
-                        <input type="first_name" class="form-control" name="first_name" id="first_name" value="{{ user.first_name }}">
+                        <input type="first_name" class="form-control" name="first_name" id="first_name"
+                               value="{{ user.first_name }}">
                         <br/>
                     </div>
                     <div class="form-group">
                         <label for="last_name">Last Name</label>
-                        <input type="last_name" class="form-control" name="last_name"  id="last_name" value="{{ user.last_name }}">
+                        <input type="last_name" class="form-control" name="last_name" id="last_name"
+                               value="{{ user.last_name }}">
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="initials">Last Name</label>
+                        <input type="initials" class="form-control" name="initials" id="initials"
+                               value="{{ user.initials }}">
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="age">Last Name</label>
+                        <input type="age" class="form-control" name="age" id="age"
+                               value="{{ user.age }}">
                     </div>
                     <br/>
                     <button type="submit" class="btn btn-primary">Submit</button>
