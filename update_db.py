@@ -56,4 +56,11 @@ def edit_record(user_id):
     return render_template('edit_record.html', user_id=user_id, user=user)
 
 
+@app.route("/update_record", methods=['POST'])
+def update_record():
+    data = request.form.get('first_name')
+    print(data)
+    return render_template('update_confirmation.html', data=data)
+
+
 app.run(debug=True)

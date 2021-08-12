@@ -1,7 +1,7 @@
 {% extends "base_template.html" %}
 
 {% set title = 'edit record' %}
-{% set page_header = 'edit record id= ' + user_id %}
+{% set page_header = 'edit record id ' + user_id %}
 
 {% block head_contents %}
 {% endblock %}
@@ -12,16 +12,15 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <form id="edit_record">
+                <form id="edit_record" action="/update_record" method="POST">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="Enter email">
+                        <label for="first_name">First Name</label>
+                        <input type="first_name" class="form-control" name="first_name" id="first_name" value="{{ user.first_name }}">
                         <br/>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label for="last_name">Last Name</label>
+                        <input type="last_name" class="form-control" name="last_name"  id="last_name" value="{{ user.last_name }}">
                     </div>
                     <br/>
                     <button type="submit" class="btn btn-primary">Submit</button>
