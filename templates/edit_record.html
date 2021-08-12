@@ -1,15 +1,32 @@
 {% extends "base_template.html" %}
 
 {% set title = 'edit record' %}
-{% set page_header = 'edit record id= ' + id  %}
+{% set page_header = 'edit record id= ' + user_id %}
 
 {% block head_contents %}
 {% endblock %}
 
 {% block contents %}
-    {% for document in cursor %}
-        <br/>
-        {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
-        <a href="/edit_record/{{ document['_id'] }}">Edit</a>
-    {% endfor %}
+    {{ user.first_name }} {{ user.last_name }}
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form id="edit_record">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="Enter email">
+                        <br/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock contents %}
