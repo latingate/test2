@@ -1,0 +1,54 @@
+Index: .idea/jsLibraryMappings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"JavaScriptLibraryMappings\">\n    <file url=\"file://$PROJECT_DIR$\" libraries=\"{jquery}\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jsLibraryMappings.xml b/.idea/jsLibraryMappings.xml
+--- a/.idea/jsLibraryMappings.xml	(revision 0ebe53358cc9dbb24d36427aaa963d2b3a49c435)
++++ b/.idea/jsLibraryMappings.xml	(date 1628871496690)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="JavaScriptLibraryMappings">
+-    <file url="file://$PROJECT_DIR$" libraries="{jquery}" />
++    <file url="PROJECT" libraries="{@types/bootstrap, @types/jquery, bootstrap}" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.9 (test 2)\" project-jdk-type=\"Python SDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0ebe53358cc9dbb24d36427aaa963d2b3a49c435)
++++ b/.idea/misc.xml	(date 1628871496641)
+@@ -1,4 +1,4 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (test 2)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (test2)" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/vagrant.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vagrant.xml b/.idea/vagrant.xml
+new file mode 100644
+--- /dev/null	(date 1628854673138)
++++ b/.idea/vagrant.xml	(date 1628854673138)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VagrantProjectSettings">
++    <option name="instanceFolder" value="" />
++    <option name="provider" value="" />
++  </component>
++</project>
+\ No newline at end of file
