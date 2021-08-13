@@ -7,9 +7,38 @@
 {% endblock %}
 
 {% block contents %}
-    {%  for document in cursor %}
+
+    <input id='submit' type='submit' value="test button"><br/>
+    <br/><span> Result: <span id="result"></span></span><br/>
+
+    {% for document in cursor %}
+        {% set doc_id = document['_id'] %}
         <br/>
         {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
-        <a href="/edit_record/{{ document['_id'] }}">Edit</a>
+        <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>
+        <span id="edit2">Edit2</span>
     {% endfor %}
 {% endblock contents %}
+
+{% block end %}
+    <script>
+        function addSubmit(ev) {
+            $('#result').text('testing');
+            ev.preventDefault();
+            $.ajax({
+                method: 'GET',
+                url: {{ url_for("get_user_id")|tojson }},
+                data: $(this).serialize()
+            }).done(addShow);
+        }
+
+        function addShow(data) {
+            {#$('#result').text(data.result);#}
+            $('#result').text('testing');
+        }
+
+
+        {#$('#calc').on('submit', addSubmit);#}
+        $('#submit').on('click', addSubmit);
+    </script>
+{% endblock %}
