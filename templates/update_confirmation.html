@@ -1,0 +1,15 @@
+{% extends "base_template.html" %}
+
+{% set title = 'update confirmation' %}
+{% set page_header = 'update confirmation' %}
+
+{% block head_contents %}
+{% endblock %}
+
+
+{% block contents %}
+    <br/>record updated as follows:
+    <br/>Name: {{ user.first_name }} {{ user.last_name }}
+    <br/>Initials: {{ user.initials }}
+    <br/>Age: {{ user.age }}
+{% endblock contents %}
