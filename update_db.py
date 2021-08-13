@@ -10,8 +10,17 @@ from gs_functions import *
 app = Flask(__name__)
 
 
-@dataclass
-class User_db:
+@dataclass(init=False)
+class User:
+    def display(self):
+        print(f'''
+        First Name: {self.first_name}
+        Last Name: {self.last_name}
+        Initlas: {self.initials}
+        Age: {self.age}
+        Pics: {self.pics}
+        ''')
+
     _id: str
     first_name: str
     last_name: str
@@ -42,20 +51,21 @@ def edit_record(user_id):
         sort=sort_by
     )
 
-    user = User_db
+    user = User()
     user.first_name = results['name']['first']
     user.last_name = results['name']['last']
     user.initials = results['initials']
     user.age = results['age']
+    # user.pics= {}
+    # user.display()
     return render_template('edit_record.html', user_id=user_id, user=user)
 
 
 @app.route("/update_record", methods=['POST'])
 def update_record():
     data = request.form
-    user = User_db
+    user = User
     user_id = data.get('_id')
-    print(user_id)
     user.first_name = data.get('first_name')
     user.last_name = data.get('last_name')
     user.initials = data.get('initials')
@@ -86,7 +96,6 @@ def update_record():
         # upsert=False
         # if upsert=True if no record found - a new one will be created
     )
-
 
     return render_template('update_confirmation.html', user=user)
 
