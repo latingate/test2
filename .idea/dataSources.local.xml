@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="PY-211.7628.24">
-    <data-source name="tstdb@localhost" uuid="f24aa7cb-9637-4885-8470-2bd26e37f0e9">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" exact-version="0" />
-      <secret-storage>forget</secret-storage>
-      <schema-mapping />
-    </data-source>
-    <data-source name="cloud-atlas" uuid="32bc6b8f-09a6-4952-ace5-76ac097f690f">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" exact-version="0" />
-      <secret-storage>forget</secret-storage>
-      <schema-mapping />
-    </data-source>
-  </component>
+  <component name="dataSourceStorageLocal" created-in="PY-211.7628.24" />
 </project>
