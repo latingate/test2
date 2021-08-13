@@ -100,4 +100,43 @@ def update_record():
     return render_template('update_confirmation.html', user=user)
 
 
+@app.route("/get_user_id", methods=['POST'])
+def get_user_id():
+    db = open_mongodb_connection()
+
+    if request.method == 'GET':
+        first_name = request.args.get('first_name')
+        last_name = request.args.get('last_name')
+
+    if request.method == 'POST':
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+
+    filter_json = {
+        "name.first": first_name,
+        "name.last": last_name
+    }
+
+    sort_by = [('_id', 1)]
+
+    results = db.find_one(
+        filter=filter_json,
+        sort=sort_by
+    )
+
+    user = User()
+    # user._id = ObjectId(results['_id'])
+    user.first_name = results['name']['first']
+    user.last_name = results['name']['last']
+    user.initials = results['initials']
+    user.age = results['age']
+    user.pics = {}
+    print(user.__dict__)
+
+    return jsonify(user_id=str(results['_id']), user=user.__dict__, query_filter=request.form)
+    # return jsonify(user_id=str(results['_id']), raw_results=str(results), error=0, message="success")
+    # return str(results['_id'])
+    # return user.__dict__
+
+
 app.run(debug=True)
