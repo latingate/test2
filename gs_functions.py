@@ -23,7 +23,6 @@ def open_mongodb_connection():
 
     # cloud (MongoDB Atlas)
     # conn = MongoClient("mongodb+srv://latingate:mgal5313b@cluster0.oss2v.mongodb.net/gal-tst-db?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE")
-    #                  # 'mongodb+srv://latingate:mgal5313b@cluster0.oss2v.mongodb.net/gal-tst-db?authSource=admin&replicaSet=atlas-wgu8qa-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true')
     # db = conn['gal-tst-db']['gal-tst-1']
 
     return db

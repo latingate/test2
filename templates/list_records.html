@@ -4,6 +4,23 @@
 {% set page_header = 'list records' %}
 
 {% block head_contents %}
+    <script>
+        function tstSubmit(ev) {
+            $('#result').text('trying to fetch results..');
+            ev.preventDefault();
+            $.ajax({
+                method: 'POST',
+                url: {{ url_for("get_user_id")|tojson }},
+                data: $(this).serialize()
+                {#data: 'Gal'#}
+            }).done(showText);
+        }
+
+        function showText(data) {
+            {#$('#result').text(data.result);#}
+            $('#result').text('success!!');
+        }
+    </script>
 {% endblock %}
 
 {% block contents %}
@@ -22,23 +39,7 @@
 
 {% block end %}
     <script>
-        function addSubmit(ev) {
-            $('#result').text('testing');
-            ev.preventDefault();
-            $.ajax({
-                method: 'GET',
-                url: {{ url_for("get_user_id")|tojson }},
-                data: $(this).serialize()
-            }).done(addShow);
-        }
-
-        function addShow(data) {
-            {#$('#result').text(data.result);#}
-            $('#result').text('testing');
-        }
-
-
-        {#$('#calc').on('submit', addSubmit);#}
-        $('#submit').on('click', addSubmit);
+        $('#submit').on('click', tstSubmit);
     </script>
+
 {% endblock %}

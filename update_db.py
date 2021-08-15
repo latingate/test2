@@ -181,4 +181,17 @@ def find_user():
     return jsonify(user_id=str(s['_id']), user=user.__dict__, query_filter=filter_json)
 
 
+@app.route("/add_db_user")
+def add_db_user():
+    conn = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
+    db_main = conn['tstdb']
+    user = 'tst1'
+    password = '12345'
+    db_main.add_user(user, password, roles=[{
+        'role': 'root',
+        'db': 'admin',
+    }])
+    return f"db user '{user}' created"
+
+
 app.run(debug=True, port=5000)
