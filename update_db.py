@@ -12,17 +12,14 @@ app = Flask(__name__)
 
 @dataclass(init=False)
 class User:
-
-    def set_values(self, **kwargs):
-        # all keys
-        # self.__dict__.update(kwargs)
-
-        # only specific allowed keys
-        allowed_keys = {'name', 'age'}
-        self.__dict__.update((k, v) for k, v in kwargs.items() if k in allowed_keys)
-
     def display(self):
-        print(self.__dict__)
+        print(f'''
+        First Name: {self.first_name}
+        Last Name: {self.last_name}
+        Initials: {self.initials}
+        Age: {self.age}
+        Pics: {self.pics}
+        ''')
 
     _id: str
     first_name: str
@@ -58,7 +55,6 @@ def edit_record(user_id):
     user.first_name = results['name']['first']
     user.last_name = results['name']['last']
     user.initials = results['initials']
-    user.age = results
     user.age = results['age']
     # user.pics= {}
     # user.display()
