@@ -50,8 +50,7 @@ def edit_record(user_id):
         filter=filter_json,
         sort=sort_by
     )
-    print(results)
-    print(results['name'])
+    # print(results)
     user = User()
     user.first_name = results['name']['first']
     user.last_name = results['name']['last']
@@ -139,6 +138,44 @@ def get_user_id():
     # return jsonify(user_id=str(results['_id']), raw_results=str(results), error=0, message="success")
     # return str(results['_id'])
     # return user.__dict__
+
+
+@app.route("/find_user", methods=['POST'])
+def find_user():
+    # find the first user whose first name includes the search string, letter insensitive
+    if request.method == 'GET':
+        search_string = request.args.get('search_string')
+    if request.method == 'POST':
+        search_string = request.form.get('search_string')
+
+    db = open_mongodb_connection()
+
+    filter_json = {
+        "name.first": {
+            "$regex": f'.*{search_string}.*',  # includes
+            "$options": 'i'  # case insensitive
+        }
+
+    }
+
+    sort_by = [('_id', 1)]
+
+    results = db.find_one(
+        filter=filter_json,
+        sort=sort_by
+    )
+
+    s = results
+
+    user = User()
+    # user._id = ObjectId(results['_id'])
+    user.first_name = s['name']['first']
+    user.last_name = s['name']['last']
+    user.initials = s['initials']
+    user.age = s['age']
+    user.pics = {}
+
+    return jsonify(user_id=str(s['_id']), user=user.__dict__, query_filter=filter_json)
 
 
 app.run(debug=True, port=5000)
