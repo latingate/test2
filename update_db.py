@@ -50,11 +50,13 @@ def edit_record(user_id):
         filter=filter_json,
         sort=sort_by
     )
-
+    print(results)
+    print(results['name'])
     user = User()
     user.first_name = results['name']['first']
     user.last_name = results['name']['last']
     user.initials = results['initials']
+    user.age = results
     user.age = results['age']
     # user.pics= {}
     # user.display()
