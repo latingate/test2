@@ -42,8 +42,5 @@ def str_to_date_object(string):
     # dd.mm.yyyy
     return time.strptime(string, "%d.%m.%Y")
 
-
 # User Functions
 # ================
-
-
