@@ -50,7 +50,7 @@ def edit_record(user_id):
         filter=filter_json,
         sort=sort_by
     )
-    # print(results)
+
     user = User()
     user.first_name = results['name']['first']
     user.last_name = results['name']['last']
