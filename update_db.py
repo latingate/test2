@@ -79,15 +79,14 @@ def update_record():
 
     sort_by = [('_id', 1)]
 
-    new_values = {"$set":
-        {
-            "name": {
-                'first': user.first_name,
-                'last': user.last_name,
-            },
-            'initials': user.initials,
-            'age': user.age,
-        }
+    new_values = {"$set": {
+        "name": {
+            'first': user.first_name,
+            'last': user.last_name,
+        },
+        'initials': user.initials,
+        'age': user.age,
+    }
     }
 
     results = db.update_one(
@@ -190,4 +189,5 @@ def add_db_user():
     return f"db user '{user}' created"
 
 
-app.run(debug=True, port=5000)
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=5000, debug=True)
