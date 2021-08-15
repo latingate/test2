@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d005d415-db5e-453b-9fab-1f30af4f627e" name="Default Changelist" comment="some edits - office [c">
-      <change afterPath="$PROJECT_DIR$/kwargs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d005d415-db5e-453b-9fab-1f30af4f627e" name="Default Changelist" comment="some edits - office pc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/update_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/update_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwargs.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwargs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +172,8 @@
       <workItem from="1628871689402" duration="73000" />
       <workItem from="1628871962445" duration="117000" />
       <workItem from="1628873032552" duration="151000" />
-      <workItem from="1629017409285" duration="2950000" />
+      <workItem from="1629017409285" duration="3495000" />
+      <workItem from="1629031376483" duration="720000" />
     </task>
     <task id="LOCAL-00001" summary="various edits - mac">
       <created>1628871623281</created>
@@ -204,7 +201,13 @@
       <option name="presentableId" value="LOCAL‎00004" />
       <updated>1629017315648</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL‎00005" summary="some edits - office [c">
+      <created>1629021581603</created>
+      <option name="number" value="LOCAL‎00005" />
+      <option name="presentableId" value="LOCAL‎00005" />
+      <updated>1629021581603</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +234,7 @@
     <SUITE FILE_PATH="coverage/test2$Flask__flask_test_py_.coverage" NAME="Flask (flask_test.py) Coverage Results" MODIFIED="1628872010573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/test2$flask_test.coverage" NAME="flask_test Coverage Results" MODIFIED="1629012796559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/test2$update_db.coverage" NAME="update_db Coverage Results" MODIFIED="1629019411828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/test2$kwargs.coverage" NAME="kwargs Coverage Results" MODIFIED="1629019812736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test2$kwargs.coverage" NAME="kwargs Coverage Results" MODIFIED="1629032098802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/test2$main.coverage" NAME="main Coverage Results" MODIFIED="1628751591552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
