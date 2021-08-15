@@ -12,14 +12,17 @@ app = Flask(__name__)
 
 @dataclass(init=False)
 class User:
+
+    def set_values(self, **kwargs):
+        # all keys
+        # self.__dict__.update(kwargs)
+
+        # only specific allowed keys
+        allowed_keys = {'name', 'age'}
+        self.__dict__.update((k, v) for k, v in kwargs.items() if k in allowed_keys)
+
     def display(self):
-        print(f'''
-        First Name: {self.first_name}
-        Last Name: {self.last_name}
-        Initlas: {self.initials}
-        Age: {self.age}
-        Pics: {self.pics}
-        ''')
+        print(self.__dict__)
 
     _id: str
     first_name: str

@@ -25,4 +25,3 @@ def buy(**shoppinglist):
 
 
 buy(apple=4, eggs=21, bananas='No')
-
