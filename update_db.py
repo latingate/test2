@@ -234,5 +234,17 @@ def add_db_user():
     return f"db user '{user}' created"
 
 
+@app.route("/table")
+def display_table():
+    header_data = ('first name', 'last name', 'age')
+    rows_data = (
+        ('gal', 'sarig', 54),
+        ('sigal', 'lifshitz', 49),
+        ('michal', 'sarig', 20),
+        ('zohar', 'gofen', 26)
+    )
+    return render_template('table.html', header_data=header_data, rows_data=rows_data)
+
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)

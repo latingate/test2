@@ -1,0 +1,15 @@
+{% extends "base_template.html" %}
+{% from 'macros.html' import table_create %}
+
+{% set title = 'table using' %}
+{% set page_header = 'jquery - ajax' %}
+
+{% block head_contents %}
+{% endblock %}
+
+{% block contents %}
+    {{ table_create(header_data, rows_data) }}
+{% endblock contents %}
+
+{% block end %}
+{% endblock end %}

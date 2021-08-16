@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d005d415-db5e-453b-9fab-1f30af4f627e" name="Default Changelist" comment="some edits - office pc">
+    <list default="true" id="694477aa-06fa-4481-992a-d7ddb719c8a8" name="Default Changelist" comment="various edits - home pc">
+      <change afterPath="$PROJECT_DIR$/templates/macros.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_08_2021__19_20__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13_08_2021__19_20__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/list_records.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/list_records.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/update_db.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -31,25 +36,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="ProjectId" id="1wffGKmTscPemsUunoAESqJOUuq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mongo" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
@@ -63,7 +67,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\gal\PycharmProjects\test2\templates" />
+      <recent name="C:\Users\Gal\Dropbox\Python\Python Project\test 2\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Python.update_db">
@@ -140,7 +144,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\gal\AppData\Local\Programs\Python\Python39\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Gal\AppData\Local\Programs\Python\Python39\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -173,6 +177,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="694477aa-06fa-4481-992a-d7ddb719c8a8" name="Default Changelist" comment="" />
       <created>1628854466678</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -185,8 +190,7 @@
       <workItem from="1628871689402" duration="73000" />
       <workItem from="1628871962445" duration="117000" />
       <workItem from="1628873032552" duration="151000" />
-      <workItem from="1629017409285" duration="3495000" />
-      <workItem from="1629031376483" duration="5677000" />
+      <workItem from="1629046838712" duration="2653000" />
     </task>
     <task id="LOCAL-00001" summary="various edits - mac">
       <created>1628871623281</created>
@@ -202,61 +206,19 @@
       <option name="project" value="LOCAL" />
       <updated>1628871659526</updated>
     </task>
-    <task id="LOCAL‎00003" summary="some edits - office [c">
-      <created>1629014643704</created>
+    <task id="LOCAL‎00003" summary="various edits - mac">
+      <created>1629048285065</created>
       <option name="number" value="LOCAL‎00003" />
       <option name="presentableId" value="LOCAL‎00003" />
-      <updated>1629014643704</updated>
+      <updated>1629048285066</updated>
     </task>
-    <task id="LOCAL‎00004" summary="some edits - office [c">
-      <created>1629017315648</created>
+    <task id="LOCAL‎00004" summary="various edits - home pc">
+      <created>1629048313031</created>
       <option name="number" value="LOCAL‎00004" />
       <option name="presentableId" value="LOCAL‎00004" />
-      <updated>1629017315648</updated>
+      <updated>1629048313031</updated>
     </task>
-    <task id="LOCAL‎00005" summary="some edits - office [c">
-      <created>1629021581603</created>
-      <option name="number" value="LOCAL‎00005" />
-      <option name="presentableId" value="LOCAL‎00005" />
-      <updated>1629021581603</updated>
-    </task>
-    <task id="LOCAL‎00006" summary="some edits - office pc">
-      <created>1629032562521</created>
-      <option name="number" value="LOCAL‎00006" />
-      <option name="presentableId" value="LOCAL‎00006" />
-      <updated>1629032562521</updated>
-    </task>
-    <task id="LOCAL‎00007" summary="some edits - office pc">
-      <created>1629032634306</created>
-      <option name="number" value="LOCAL‎00007" />
-      <option name="presentableId" value="LOCAL‎00007" />
-      <updated>1629032634306</updated>
-    </task>
-    <task id="LOCAL‎00008" summary="some edits - office pc">
-      <created>1629033475943</created>
-      <option name="number" value="LOCAL‎00008" />
-      <option name="presentableId" value="LOCAL‎00008" />
-      <updated>1629033475944</updated>
-    </task>
-    <task id="LOCAL‎00009" summary="some edits - office pc">
-      <created>1629100649828</created>
-      <option name="number" value="LOCAL‎00009" />
-      <option name="presentableId" value="LOCAL‎00009" />
-      <updated>1629100649828</updated>
-    </task>
-    <task id="LOCAL‎00010" summary="some edits - office pc">
-      <created>1629106828090</created>
-      <option name="number" value="LOCAL‎00010" />
-      <option name="presentableId" value="LOCAL‎00010" />
-      <updated>1629106828090</updated>
-    </task>
-    <task id="LOCAL‎00011" summary="some edits - office pc">
-      <created>1629107380539</created>
-      <option name="number" value="LOCAL‎00011" />
-      <option name="presentableId" value="LOCAL‎00011" />
-      <updated>1629107380539</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,15 +238,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="various edits - mac" />
-    <MESSAGE value="some edits - office [c" />
-    <MESSAGE value="some edits - office pc" />
-    <option name="LAST_COMMIT_MESSAGE" value="some edits - office pc" />
+    <MESSAGE value="various edits - home pc" />
+    <option name="LAST_COMMIT_MESSAGE" value="various edits - home pc" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/test2$Flask__flask_test_py_.coverage" NAME="Flask (flask_test.py) Coverage Results" MODIFIED="1628872010573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/test2$flask_test.coverage" NAME="flask_test Coverage Results" MODIFIED="1629012796559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/test2$update_db.coverage" NAME="update_db Coverage Results" MODIFIED="1629107303794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/test2$kwargs.coverage" NAME="kwargs Coverage Results" MODIFIED="1629034065579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/test2$main.coverage" NAME="main Coverage Results" MODIFIED="1628751591552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$update_db.coverage" NAME="update_db Coverage Results" MODIFIED="1629122332787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2c$main.coverage" NAME="main Coverage Results" MODIFIED="1627144105344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$kwargs.coverage" NAME="kwargs Coverage Results" MODIFIED="1629049225355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$main.coverage" NAME="main Coverage Results" MODIFIED="1629048859905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$gs_functions.coverage" NAME="gs_functions Coverage Results" MODIFIED="1627323639286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test2$main.coverage" NAME="main Coverage Results" MODIFIED="1628871668815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$flask_test.coverage" NAME="flask_test Coverage Results" MODIFIED="1629048865626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test2$update_db.coverage" NAME="update_db Coverage Results" MODIFIED="1628873040814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$pyqt5.coverage" NAME="pyqt5 Coverage Results" MODIFIED="1627329274404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test_2$tst1.coverage" NAME="tst1 Coverage Results" MODIFIED="1628246867148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/test2$flask_test.coverage" NAME="flask_test Coverage Results" MODIFIED="1628873120935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
