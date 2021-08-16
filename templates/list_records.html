@@ -9,26 +9,28 @@
             $('#result').text('trying to fetch results for search_string=' + $('#search_string').val());
             ev.preventDefault();
             $.ajax({
-                    method: 'POST',
+                    type: 'POST',
                     url: {{ url_for("get_records")|tojson }},
                     {#data: $(this).serialize()#}
-                    data: $('#search_string').val().serialize(),
+                    data: '{"search_string": "gal"}',
+                    {#data: $('#search_string').val().serialize(),#}
                     {#.serialize() - is this a must??#}
-                    {#success: $('#results_list').html('ajax succeed!!'),#}
-                    {#fail: $('#results_list').html('ajax failed!!')#}
+                    success: $('#results_list').html('ajax succeed!!'),
+                    fail: $('#results_list').html('ajax failed!!')
                 }
             )
                 .done(function (data) {
-                    alert('ajax ok');
+                    {#alert('ajax ok');#}
                     $('#results_list').html('ajax succeed!! data received should enter here' + data);
+                    showText("OK")
                 })
                 .fail(function () {
-                    alert('ajax error');
+                    {#alert('ajax error');#}
                     showText('failed');
                 })
                 .always(function () {
-                    alert("displayed anyway");
-                    showText('displayed anyway');
+                    {#alert("displayed anyway");#}
+                    //showText('displayed anyway');
                 })
 
 
@@ -40,7 +42,7 @@
 
         function showText(data) {
             {#$('#result').text(data.result);#}
-            $('#result').text('success!!');
+            $('#result').text(data);
         }
 
     </script>
