@@ -29,18 +29,29 @@ class User:
     pics: dict
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 @app.route("/list_records", methods=['GET', 'POST'])
 def list_records():
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
     db = open_mongodb_connection()
     # search_string = ''
-    filter_json = {
-        "name.first": {
-            "$regex": f'.*{search_string}.*',  # includes
-            "$options": 'i'  # case insensitive
+    filter_json = {"$or": [
+        {
+            "name.first": {
+                "$regex": f'.*{search_string}.*',  # includes
+                "$options": 'i'  # case insensitive
+            }
+        },
+
+        {
+            "name.last": {
+                "$regex": f'.*{search_string}.*',  # includes
+                "$options": 'i'  # case insensitive
+            }
         }
+    ]
     }
+
     sort_by = [('_id', 1)]
     cursor = db.find(
         filter=filter_json,
@@ -65,9 +76,10 @@ def get_records():
         filter=filter_json,
         sort=sort_by
     )
+    results = list(cursor)
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
-    return str(cursor)
+    return str(results)
 
 
 @app.route("/edit_record/<user_id>")

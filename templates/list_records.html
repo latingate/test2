@@ -5,18 +5,28 @@
 
 {% block head_contents %}
     <script>
-        function tstSubmit(ev) {
+        function filter_submit(ev) {
             $('#result').text('trying to fetch results for search_string=' + $('#search_string').val());
             ev.preventDefault();
             $.ajax({
-                method: 'POST',
-                url: {{ url_for("get_records")|tojson }},
-                {#data: $(this).serialize()#}
-                data: $('#search_string').val().serialize() // .serialize() - is this a must??
-                {#data: 'Gal'#}
-                success: $('#result').text('ajax succseed!!');
-            }).done(showText);
+                    method: 'POST',
+                    url: {{ url_for("get_records")|tojson }},
+                    {#data: $(this).serialize()#}
+                    data: $('#search_string').val().serialize(),
+                    {#.serialize() - is this a must??#}
+                    {#success: $('#results_list').html('ajax succeed!!'),#}
+                }
+                    .done(function (data) {
+                        $('#results_list').html('ajax succeed!! data received should enter here' + data);
+                    })
+                    .fail(function () {
+                        alert('Error occured');
+                        showText('failed');
+                    })
+            )
+
         }
+
 
         function display_results() {
             $('#results').text('//value returned from api');
@@ -30,24 +40,29 @@
 {% endblock %}
 
 {% block contents %}
-
+    {#    <form action="" method="POST">#}
     <input id="search_string" name="search_string" type="text"/>
     <input id='submit' type='submit' value="filter"><br/>
     <br/><span> Result: <span id="result"></span></span><br/>
-    <div id="results" name='results'>
-        {% for document in cursor %}
-            {% set doc_id = document['_id'] %}
-            <br/>
-            {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
-            <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>
-            <span id="edit2">Edit2</span>
-        {% endfor %}
+    <div id="results_list" name='results_list'>
+        {% include 'list_records_results_div..html' %}
+
+        {#        {% for document in cursor %}#}
+        {#            {% set doc_id = document['_id'] %}#}
+        {#            <br/>#}
+        {#            {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}#}
+        {#            <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>#}
+        {#            <span id="edit2">Edit2</span>#}
+        {#        {% endfor %}#}
+
     </div>
+    {#    </form>#}
 {% endblock contents %}
 
 {% block end %}
     <script>
-        $('#submit').on('click', tstSubmit);
+        {#user either html form submit or javascript + ajax / jquery#}
+        $('#submit').on('click', filter_submit);
     </script>
 
 {% endblock %}

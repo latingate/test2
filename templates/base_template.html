@@ -12,7 +12,8 @@
     {% block head_contents %}
     {% endblock %}
 </head>
-<body">
+<body
+">
 <div>
     <h3 class="alert alert-info text-center">{{ page_header }}</h3>
     {% block contents %}
@@ -20,10 +21,8 @@
 </div>
 
 <br/><a href="/">return to homepage</a>
-<br/><br/>
-<p style='color: red'>*** This page was created from base_template ***</p>
 
-{% block end%}
+{% block end %}
 {% endblock %}
 
 </body>
