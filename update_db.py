@@ -37,7 +37,6 @@ def test():
 @app.route("/test_in", methods=['POST'])
 def test_in():
     result = request.form.get('result')
-    result += result
     return render_template('test_in.html', result=result)
     # return jsonify({'data': render_template('test_in.html', result=result)})
 

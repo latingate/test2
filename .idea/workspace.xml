@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="694477aa-06fa-4481-992a-d7ddb719c8a8" name="Default Changelist" comment="various edits - home pc">
-      <change afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/test_in.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/test 2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test 2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/list_records.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/list_records.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/list_records_results_div..html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/list_records_results_div.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test_in.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/update_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/update_db.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +190,7 @@
       <workItem from="1628873032552" duration="151000" />
       <workItem from="1629046838712" duration="2653000" />
       <workItem from="1629130176590" duration="2064000" />
-      <workItem from="1629143267479" duration="5643000" />
+      <workItem from="1629143267479" duration="6251000" />
     </task>
     <task id="LOCAL-00001" summary="various edits - mac">
       <created>1628871623281</created>
@@ -240,7 +236,13 @@
       <option name="presentableId" value="LOCAL‎00007" />
       <updated>1629132250345</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎00008" summary="various edits - home pc">
+      <created>1629149031322</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1629149031322</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
