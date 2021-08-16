@@ -29,6 +29,12 @@ class User:
     pics: dict
 
 
+@app.route("/list_records_new", methods=['GET', 'POST'])
+def list_records_new():
+    cursor = get_records()
+    return render_template('list_records.html', cursor=cursor)
+
+
 @app.route("/", methods=['GET', 'POST'])
 @app.route("/list_records", methods=['GET', 'POST'])
 def list_records():
@@ -42,7 +48,6 @@ def list_records():
                 "$options": 'i'  # case insensitive
             }
         },
-
         {
             "name.last": {
                 "$regex": f'.*{search_string}.*',  # includes
@@ -65,12 +70,22 @@ def get_records():
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
     db = open_mongodb_connection()
     # search_string = ''
-    filter_json = {
-        "name.first": {
-            "$regex": f'.*{search_string}.*',  # includes
-            "$options": 'i'  # case insensitive
+    filter_json = {"$or": [
+        {
+            "name.first": {
+                "$regex": f'.*{search_string}.*',  # includes
+                "$options": 'i'  # case insensitive
+            }
+        },
+        {
+            "name.last": {
+                "$regex": f'.*{search_string}.*',  # includes
+                "$options": 'i'  # case insensitive
+            }
         }
+    ]
     }
+
     sort_by = [('_id', 1)]
     cursor = db.find(
         filter=filter_json,
