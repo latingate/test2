@@ -6,14 +6,20 @@
 {% block head_contents %}
     <script>
         function tstSubmit(ev) {
-            $('#result').text('trying to fetch results..');
+            $('#result').text('trying to fetch results for search_string=' + $('#search_string').val());
             ev.preventDefault();
             $.ajax({
                 method: 'POST',
-                url: {{ url_for("get_user_id")|tojson }},
-                data: $(this).serialize()
+                url: {{ url_for("get_records")|tojson }},
+                {#data: $(this).serialize()#}
+                data: $('#search_string').val().serialize() // .serialize() - is this a must??
                 {#data: 'Gal'#}
+                success: $('#result').text('ajax succseed!!');
             }).done(showText);
+        }
+
+        function display_results() {
+            $('#results').text('//value returned from api');
         }
 
         function showText(data) {
@@ -25,16 +31,18 @@
 
 {% block contents %}
 
-    <input id='submit' type='submit' value="test button"><br/>
+    <input id="search_string" name="search_string" type="text"/>
+    <input id='submit' type='submit' value="filter"><br/>
     <br/><span> Result: <span id="result"></span></span><br/>
-
-    {% for document in cursor %}
-        {% set doc_id = document['_id'] %}
-        <br/>
-        {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
-        <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>
-        <span id="edit2">Edit2</span>
-    {% endfor %}
+    <div id="results" name='results'>
+        {% for document in cursor %}
+            {% set doc_id = document['_id'] %}
+            <br/>
+            {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
+            <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>
+            <span id="edit2">Edit2</span>
+        {% endfor %}
+    </div>
 {% endblock contents %}
 
 {% block end %}

@@ -30,10 +30,44 @@ class User:
 
 
 @app.route("/")
+@app.route("/list_records", methods=['GET', 'POST'])
 def list_records():
+    search_string = request.form.get('search_string') if request.form.get('search_string') else ''
     db = open_mongodb_connection()
-    cursor = db.find({})
-    return render_template('list_records.html', cursor=cursor)
+    # search_string = ''
+    filter_json = {
+        "name.first": {
+            "$regex": f'.*{search_string}.*',  # includes
+            "$options": 'i'  # case insensitive
+        }
+    }
+    sort_by = [('_id', 1)]
+    cursor = db.find(
+        filter=filter_json,
+        sort=sort_by
+    )
+    return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
+
+
+@app.route("/get_records", methods=['GET', 'POST'])
+def get_records():
+    search_string = request.form.get('search_string') if request.form.get('search_string') else ''
+    db = open_mongodb_connection()
+    # search_string = ''
+    filter_json = {
+        "name.first": {
+            "$regex": f'.*{search_string}.*',  # includes
+            "$options": 'i'  # case insensitive
+        }
+    }
+    sort_by = [('_id', 1)]
+    cursor = db.find(
+        filter=filter_json,
+        sort=sort_by
+    )
+    # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
+    # return jsonify(cursor=cursor, search_string=search_string)
+    return str(cursor)
 
 
 @app.route("/edit_record/<user_id>")
@@ -153,7 +187,6 @@ def find_user():
             "$regex": f'.*{search_string}.*',  # includes
             "$options": 'i'  # case insensitive
         }
-
     }
 
     sort_by = [('_id', 1)]
