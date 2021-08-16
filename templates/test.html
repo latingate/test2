@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+        function test_ajax(ev) {
+            $('#result').text('submit pressed - before ajax');
+            {#ev.preventDefault();#}
+
+            $.ajax({
+                    type: 'POST',
+                    url: {{ url_for("test_in")|tojson }},
+                    data: {"result": "gal123"},
+                    {#success: $('#result').text('ajax success!!'),#}
+                    {#done: $('#result').text('ajax done!!'),#}
+                    {#fail: $('#result').text('ajax failed!!')#}
+                }
+            )
+                .done(function (data) {
+                    {#alert('success');#}
+                    showText('success' + data);
+                })
+                .fail(function () {
+                    {#alert('ajax error');#}
+                    showText('failed');
+                })
+        }
+    </script>
+
+</head>
+
+
+<body>
+
+
+<input id='submit' type='submit' value="filter"><br/>
+<br/><span>Time: <span id="time"></span></span><br/>
+<br/><span> Result: <span id="result"></span></span><br/>
+<p></p>
+<div id="div1">div1 original</div>
+<br/>result = {{ result }}
+<br/><br/><br/>from test_in: (below)
+{% include 'test_in.html' %}
+
+
+<script>
+
+    function showText(data) {
+        {#$('#result').text(data.result);#}
+        $('#result').text(data);
+    }
+
+
+    {#user either html form submit or javascript + ajax / jquery#}
+    $('#submit').on('click', test_ajax);
+
+    d = new Date();
+    $('#time').text(d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds())
+</script>
+
+
+<p></p>
+
+</body>
+</html>
+
+
+

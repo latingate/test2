@@ -29,8 +29,22 @@ class User:
     pics: dict
 
 
+@app.route("/test", methods=['GET', 'POST'])
+def test():
+    return render_template('test.html')
+
+
+@app.route("/test_in", methods=['POST'])
+def test_in():
+    result = request.form.get('result')
+    result += result
+    return render_template('test_in.html', result=result)
+    # return jsonify({'data': render_template('test_in.html', result=result)})
+
+
 @app.route("/list_records_new", methods=['GET', 'POST'])
 def list_records_new():
+    test()
     cursor = get_records()
     return render_template('list_records.html', cursor=cursor)
 
@@ -251,3 +265,7 @@ def add_db_user():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
+
+# ajax - result-->
+# $(#div).html = render(get_results)
+# ajax render template flask
