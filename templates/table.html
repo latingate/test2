@@ -1,14 +1,20 @@
 {% extends "base_template.html" %}
 {% from 'macros.html' import table_create %}
 
-{% set title = 'table using' %}
-{% set page_header = 'jquery - ajax' %}
+{% set title = 'table using macros' %}
+{% set page_header = 'table using jinja2 macros' %}
 
 {% block head_contents %}
 {% endblock %}
 
 {% block contents %}
-    {{ table_create(header_data, rows_data) }}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-4">
+                {{ table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes) }}
+            </div>
+        </div>
+    </div>
 {% endblock contents %}
 
 {% block end %}

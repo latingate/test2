@@ -1,4 +1,4 @@
-{% macro table_header(header_data) %}
+{% macro table_header(header_data, header_classes) %}
     <thead>
     <tr>
         {% for header in header_data %}
@@ -8,20 +8,21 @@
     </thead>
 {% endmacro %}
 
-{% macro table_rows(rows_data) %}
+{% macro table_rows(rows_data, row_classes, cell_classes, col_classes) %}
     {% for row in rows_data %}
-        <tr>
+        <tr class="{{ row_classes }}">
             {% for cell in row %}
-                <td>{{ cell }}</td>
+                {% set col_number = loop.index %}
+                <td class="{{ cell_classes }} {{ col_classes[col_number] }}">{{ cell }}</td>
             {% endfor %}
         </tr>
     {% endfor %}
 {% endmacro %}
 
 
-{% macro table_create(header_data, rows_data) %}
-    <table class="table">
-        {{ table_header(header_data) }}
-        {{ table_rows(rows_data) }}
+{% macro table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes) %}
+    <table class="table {{ table_classes }}">
+        {{ table_header(header_data, header_classes) }}
+        {{ table_rows(rows_data, row_classes, cell_classes,col_classes) }}
     </table>
 {% endmacro %}

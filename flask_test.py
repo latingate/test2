@@ -161,5 +161,51 @@ def mongodb_getone(name):
                            first_record_json=first_record_json, results_count=results_count)
 
 
+@app.route("/table")
+def display_table():
+    header_data = ('name (english)', 'name (hebrew)', 'age')
+
+    rows_data = (
+        ('Gal Sarig', 'גל שריג', 54),
+        ('Sigal Lifshitz', 'סיגל ליפשיץ', 49),
+        ('Michal Sarig', 'מיכל שריג', 20),
+        ('Zohar Gofen', 'זהר גופן', 26)
+    )
+
+    table_classes = 'table-striped table-bordered table-hover'
+    header_classes = ' text-center'
+    row_classes = ''
+    cell_classes = ''
+
+    col_classes = {
+        1: 'text-start',
+        2: 'text-end',
+        3: 'text-center'
+    }
+    return render_template('table.html', header_data=header_data, rows_data=rows_data, table_classes=table_classes,
+                           header_classes=header_classes, row_classes=row_classes, cell_classes=cell_classes,
+                           col_classes=col_classes)
+
+
+# Site Map
+def has_no_empty_params(rule):
+    defaults = rule.defaults if rule.defaults is not None else ()
+    arguments = rule.arguments if rule.arguments is not None else ()
+    return len(defaults) >= len(arguments)
+
+
+@app.route("/site_map")
+def site_map():
+    links = []
+    for rule in app.url_map.iter_rules():
+        # Filter out rules we can't navigate to in a browser
+        # and rules that require parameters
+        if "GET" in rule.methods and has_no_empty_params(rule):
+            url = url_for(rule.endpoint, **(rule.defaults or {}))
+            links.append((url, rule.endpoint))
+    # links is now a list of url, endpoint tuples
+    return jsonify(links)
+
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
