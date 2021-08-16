@@ -15,18 +15,24 @@
                     data: $('#search_string').val().serialize(),
                     {#.serialize() - is this a must??#}
                     {#success: $('#results_list').html('ajax succeed!!'),#}
+                    {#fail: $('#results_list').html('ajax failed!!')#}
                 }
-                    .done(function (data) {
-                        $('#results_list').html('ajax succeed!! data received should enter here' + data);
-                    })
-                    .fail(function () {
-                        alert('Error occured');
-                        showText('failed');
-                    })
             )
+                .done(function (data) {
+                    alert('ajax ok');
+                    $('#results_list').html('ajax succeed!! data received should enter here' + data);
+                })
+                .fail(function () {
+                    alert('ajax error');
+                    showText('failed');
+                })
+                .always(function () {
+                    alert("displayed anyway");
+                    showText('displayed anyway');
+                })
+
 
         }
-
 
         function display_results() {
             $('#results').text('//value returned from api');
@@ -36,6 +42,7 @@
             {#$('#result').text(data.result);#}
             $('#result').text('success!!');
         }
+
     </script>
 {% endblock %}
 
