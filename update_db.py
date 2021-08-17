@@ -29,15 +29,15 @@ class User:
     pics: dict
 
 
-@app.route("/test", methods=['POST', 'GET'])
-def test():
-    return render_template('test.html')
+@app.route("/ajax_include", methods=['POST', 'GET'])
+def ajax_include():
+    return render_template('ajax_include.html')
 
 
 @app.route("/test_in", methods=['POST'])
-def test_in():
+def ajax_include_in():
     result = request.form.get('result')
-    return render_template('test_in.html', result=result)
+    return render_template('ajax_include_in.html', result=result)
     # return jsonify({'data': render_template('test_in.html', result=result)})
 
 
