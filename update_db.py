@@ -101,10 +101,10 @@ def get_records():
     sort_by = [('_id', 1)]
     cursor = db.find(
         filter=filter_json,
-        sort=sort_by
+        sort=sort_by,
     )
     results = list(cursor)
-    print(results)
+    # print(results)
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
     return str(results)
