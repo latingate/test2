@@ -29,11 +29,6 @@ class User:
     pics: dict
 
 
-@app.route("/test", methods=['GET', 'POST'])
-def test():
-    return render_template('test.html')
-
-
 @app.route("/test_in", methods=['POST'])
 def test_in():
     result = request.form.get('result')
@@ -43,7 +38,6 @@ def test_in():
 
 @app.route("/list_records_new", methods=['GET', 'POST'])
 def list_records_new():
-    test()
     cursor = get_records()
     return render_template('list_records.html', cursor=cursor)
 
