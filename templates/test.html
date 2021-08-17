@@ -13,7 +13,7 @@
             $.ajax({
                     type: 'POST',
                     url: {{ url_for("test_in")|tojson }},
-                    data: {"result": "gal123"},
+                    data: {"result": "gal1234"},
                     success: function (data) {
                         $('#div1').html(data);
                         showText('ajax success!!');
@@ -36,7 +36,6 @@
 <br/><span> Result: <span id="result"></span></span><br/>
 <p></p>div1:
 <div id="div1">
-    div1 original
     {% include 'test_in.html' %}
 </div>
 
