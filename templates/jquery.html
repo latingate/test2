@@ -11,7 +11,7 @@
         <label>a <input name="a" id="a"></label>
         <span>+</span>
         <label>b <input name="b" id="b"></label>
-        <input type="submit" value="Calculate">
+        <input type="submit" id='calculate' value="Calculate">
     </form>
     <span> Result: <span id="result"></span></span>
 
@@ -31,6 +31,7 @@
         }
 
         $('#calc').on('submit', addSubmit);
+        {#$('#calculate').on('click', addSubmit);#}
         {#$('#a').on('keyup', addSubmit);#}
         {#$('#b').on('keyup', addSubmit);#}
     </script>

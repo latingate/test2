@@ -29,6 +29,11 @@ class User:
     pics: dict
 
 
+@app.route("/test", methods=['POST', 'GET'])
+def test():
+    return render_template('test.html')
+
+
 @app.route("/test_in", methods=['POST'])
 def test_in():
     result = request.form.get('result')
@@ -99,6 +104,7 @@ def get_records():
         sort=sort_by
     )
     results = list(cursor)
+    print(results)
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
     return str(results)
