@@ -8,20 +8,36 @@
     <script>
         function test_ajax(ev) {
             $('#result').text('submit pressed - before ajax');
-            {#ev.preventDefault();#}
+            ev.preventDefault();
 
             $.ajax({
                     type: 'POST',
                     url: {{ url_for("test_in")|tojson }},
                     data: {"result": "gal1234"},
-                    success: function (data) {
-                        $('#div1').html(data);
-                        showText('ajax success!!');
-                    },
-                    done: $('#result').text('ajax done!!'),
-                    fail: $('#result').text('ajax failed!!')
-                }
+
+                },
             )
+                .done(function (data_results) {
+                    $('#div1').html(data_results);
+                    $('#result').text('ajax done!!')
+                })
+                .fail(function () {
+                    $('#result').text('ajax failed!!')
+                })
+
+
+            {#$.ajax({#}
+            {#        type: 'POST',#}
+            {#        url: {{ url_for("test_in")|tojson }},#}
+            {#        data: {"result": "gal5678"},#}
+            {#        success: function (data_results) {#}
+            {#            $('#div1').html(data_results);#}
+            {#            showText('ajax done!!');#}
+            {#        },#}
+            {#        fail: $('#result').text('ajax failed!!')#}
+            {#    }#}
+            {#)#}
+
         }
     </script>
 
