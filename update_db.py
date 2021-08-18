@@ -10,6 +10,7 @@ from gs_functions import *
 app = Flask(__name__)
 
 
+
 @dataclass(init=False)
 class User:
     def display(self):
