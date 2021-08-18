@@ -34,7 +34,7 @@ def ajax_include():
     return render_template('ajax_include.html')
 
 
-@app.route("/test_in", methods=['POST'])
+@app.route("/ajax_include_in", methods=['POST'])
 def ajax_include_in():
     result = request.form.get('result')
     return render_template('ajax_include_in.html', result=result)
@@ -66,14 +66,18 @@ def list_records():
                 "$options": 'i'  # case insensitive
             }
         }
-    ]
+    ],
     }
 
     sort_by = [('_id', 1)]
+
     cursor = db.find(
         filter=filter_json,
-        sort=sort_by
+        sort=sort_by,
+        # batch_size=3
+        # TODO batch_size is not working
     )
+
     return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
 
 
