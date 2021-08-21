@@ -53,7 +53,7 @@ def list_records():
     # flask pagination: https://harishvc.com/2015/04/15/pagination-flask-mongodb/
     search_string = request.args.get('search_string') if request.form.get('search_string') else ''
     page_size = request.args.get('page_size', default=0, type=int)
-    page_size = 2
+    page_size = 3
     # page_size = page_size if page_size else 0
     # if not page_size:
     #     page_size = 0
