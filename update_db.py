@@ -51,6 +51,12 @@ def list_records_new():
 @app.route("/list_records", methods=['GET', 'POST'])
 def list_records():
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
+    page_size = request.form.get('page_size', default=0)
+    # page_size = page_size if page_size else 0
+    # if not page_size:
+    #     page_size = 0
+    page_numnber = request.form.get('page_number', default=1)
+    print(page_numnber)
     db = open_mongodb_connection()
     # search_string = ''
     filter_json = {"$or": [
@@ -74,6 +80,7 @@ def list_records():
     cursor = db.find(
         filter=filter_json,
         sort=sort_by,
+        limit=page_size,
         # batch_size=3
         # TODO batch_size is not working
     )
