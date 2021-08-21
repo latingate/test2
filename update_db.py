@@ -47,16 +47,17 @@ def list_records_new():
     return render_template('list_records.html', cursor=cursor)
 
 
-@app.route("/", methods=['GET', 'POST'])
-@app.route("/list_records", methods=['GET', 'POST'])
+@app.route("/", methods=['GET'])
+@app.route("/list_records", methods=['GET'])
 def list_records():
     # flask pagination: https://harishvc.com/2015/04/15/pagination-flask-mongodb/
-    search_string = request.form.get('search_string') if request.form.get('search_string') else ''
-    page_size = request.form.get('page_size', default=0, type=int)
+    search_string = request.args.get('search_string') if request.form.get('search_string') else ''
+    page_size = request.args.get('page_size', default=0, type=int)
+    page_size = 2
     # page_size = page_size if page_size else 0
     # if not page_size:
     #     page_size = 0
-    page_numnber = request.form.get('page_number', default=1, type=int)
+    page_number = request.args.get('page_number', default=1, type=int)
     # return jsonify(f"page_size: {page_size}", f"page_number: {page_numnber}")
     db = open_mongodb_connection()
     # search_string = ''
@@ -82,12 +83,17 @@ def list_records():
         filter=filter_json,
         sort=sort_by,
         limit=page_size,
-        skip=page_size*(page_numnber-1)
+        skip=page_size * (page_number - 1)
         # batch_size=3
         # TODO batch_size is not working
     )
 
-    return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
+    documents_count = cursor.count()
+    if page_size > 0:
+        number_of_pages = int((documents_count - 1) / page_size) + 1
+
+    return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
+                           page_number=page_number, number_of_pages=number_of_pages, page_size=page_size)
 
 
 @app.route("/get_records", methods=['GET', 'POST'])
