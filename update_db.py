@@ -1,4 +1,5 @@
 from flask import Flask, redirect, request, render_template, request, session, url_for, jsonify
+from flask_paginate import Pagination, get_page_parameter
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from dataclasses import dataclass
@@ -85,7 +86,7 @@ def list_records():
     )
 
     documents_count = cursor.count()
-    print(f'documents_count: {documents_count}')
+    # print(f'documents_count: {documents_count}')
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
 
