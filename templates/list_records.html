@@ -65,12 +65,16 @@
         {#            <span id="edit2">Edit2</span>#}
         {#        {% endfor %}#}
     </div>
-    {% if number_of_pages > 0 %}
+    {% if number_of_pages > 1 %}
+        <br/><br/>
         {% if page_number > 1 %}
-            <br/><a href="{{ url_for('list_records', method='POST', page_number=page_number-1, page_size=page_size) }}">Previous Page</a>
+            <a href="{{ url_for('list_records', method='POST', page_number=page_number-1, page_size=page_size) }}">Previous</a>
         {% endif %}
+        {% for page in range(1,number_of_pages+1) %}
+            <a href="{{ url_for('list_records', method='POST', page_number=page, page_size=page_size) }}">{{ page }}</a>
+        {% endfor %}
         {% if page_number < number_of_pages %}
-            <br/><a href="{{ url_for('list_records', method='POST', page_number=page_number+1, page_size=page_size) }}">Next Page</a>
+             <a href="{{ url_for('list_records', method='POST', page_number=page_number+1, page_size=page_size) }}">Next</a>
         {% endif %}
     {% endif %}
     {#    </form>#}

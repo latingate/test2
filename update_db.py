@@ -58,7 +58,7 @@ def list_records():
     # if not page_size:
     #     page_size = 0
     page_number = request.args.get('page_number', default=1, type=int)
-    # return jsonify(f"page_size: {page_size}", f"page_number: {page_numnber}")
+    # return jsonify(f"page_size: {page_size}", f"page_number: {page_number}")
     db = open_mongodb_connection()
     # search_string = ''
     filter_json = {"$or": [
