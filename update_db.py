@@ -99,7 +99,6 @@ def list_records():
 @app.route("/get_records", methods=['GET', 'POST'])
 def get_records():
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
-    print(f'search_string = {search_string}')
     db = open_mongodb_connection()
     # search_string = ''
     filter_json = {"$or": [
