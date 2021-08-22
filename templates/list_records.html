@@ -15,18 +15,15 @@
                     data: {"search_string": $('#search_string').val()},
                     {#data: $('#search_string').val().serialize(),#}
                     {#.serialize() - is this a must??#}
-                    success: function (data) {
-                        $('#results_list').html('ajax succeed!!')
-                    },
-                    fail: $('#results_list').html('ajax failed!!')
                 }
             )
                 .done(function (data) {
                     {#alert('ajax ok');#}
-                    $('#results_list').html('ajax succeed!!<br/>search results:<br/>' + data);
+                    $('#results_list').html('<br/>search results:<br/>' + data);
                     showText("OK")
                 })
                 .fail(function () {
+                    $('#results_list').html('<br/>ajax failed:<br/>');
                     {#alert('ajax error');#}
                     showText('failed');
                 })
@@ -54,7 +51,7 @@
     <form action="" method="POST">
         <input id="search_string" name="search_string" type="text"/>
         <input id='submit' type='submit' value="filter"><br/>
-        <br/><span> Result: <span id="result"></span></span><br/>
+{#        <br/><span> Result: <span id="result"></span></span><br/>#}
         <br/>Page {{ page_number }} of {{ number_of_pages }}
         <div id="results_list" name='results_list'>
             {% include 'list_records_results_div.html' %}

@@ -98,6 +98,7 @@ def list_records():
 
 @app.route("/get_records", methods=['GET', 'POST'])
 def get_records():
+    # TODO add pagination to get_records
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
     db = open_mongodb_connection()
     # search_string = ''
