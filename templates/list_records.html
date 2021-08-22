@@ -15,13 +15,15 @@
                     data: '{"search_string": "gal"}',
                     {#data: $('#search_string').val().serialize(),#}
                     {#.serialize() - is this a must??#}
-                    success: $('#results_list').html('ajax succeed!!'),
+                    success: function (data) {
+                        $('#results_list').html('ajax succeed!!')
+                    },
                     fail: $('#results_list').html('ajax failed!!')
                 }
             )
                 .done(function (data) {
                     {#alert('ajax ok');#}
-                    $('#results_list').html('ajax succeed!! data received should enter here' + data);
+                    $('#results_list').html('ajax succeed!!<br/>data received:<br/>' + data);
                     showText("OK")
                 })
                 .fail(function () {
@@ -57,13 +59,13 @@
     <div id="results_list" name='results_list'>
         {% include 'list_records_results_div.html' %}
 
-        {#        {% for document in cursor %}#}
-        {#            {% set doc_id = document['_id'] %}#}
-        {#            <br/>#}
-        {#            {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}#}
-        {#            <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>#}
-        {#            <span id="edit2">Edit2</span>#}
-        {#        {% endfor %}#}
+{#                {% for document in cursor %}#}
+{#                    {% set doc_id = document['_id'] %}#}
+{#                    <br/>#}
+{#                    {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}#}
+{#                    <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>#}
+{#                    <span id="edit2">Edit2</span>#}
+{#                {% endfor %}#}
     </div>
     {% if number_of_pages > 1 %}
         <br/><br/>
@@ -74,7 +76,7 @@
             <a href="{{ url_for('list_records', method='POST', page_number=page, page_size=page_size) }}">{{ page }}</a>
         {% endfor %}
         {% if page_number < number_of_pages %}
-             <a href="{{ url_for('list_records', method='POST', page_number=page_number+1, page_size=page_size) }}">Next</a>
+            <a href="{{ url_for('list_records', method='POST', page_number=1+page_number, page_size=page_size) }}">Next</a>
         {% endif %}
     {% endif %}
     {#    </form>#}

@@ -122,10 +122,15 @@ def get_records():
         filter=filter_json,
         sort=sort_by,
     )
+
     results = list(cursor)
+
     # print(results)
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
+
+    # return render_template('list_records_results_div.html', cursor=cursor)
+    # return str(cursor)
     return str(results)
 
 
