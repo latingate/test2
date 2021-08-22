@@ -52,15 +52,11 @@ def list_records_new():
 def list_records():
     # flask pagination: https://harishvc.com/2015/04/15/pagination-flask-mongodb/
     search_string = request.args.get('search_string') if request.form.get('search_string') else ''
-    page_size = request.args.get('page_size', default=0, type=int)
-    page_size = 3
-    # page_size = page_size if page_size else 0
-    # if not page_size:
-    #     page_size = 0
+    default_page_size = 4
+    page_size = request.args.get('page_size', default=default_page_size, type=int)
     page_number = request.args.get('page_number', default=1, type=int)
     # return jsonify(f"page_size: {page_size}", f"page_number: {page_number}")
     db = open_mongodb_connection()
-    # search_string = ''
     filter_json = {"$or": [
         {
             "name.first": {
@@ -89,6 +85,7 @@ def list_records():
     )
 
     documents_count = cursor.count()
+    print(f'documents_count: {documents_count}')
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
 
@@ -98,8 +95,10 @@ def list_records():
 
 @app.route("/get_records", methods=['GET', 'POST'])
 def get_records():
-    # TODO add pagination to get_records
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
+    default_page_size = 4
+    page_size = request.args.get('page_size', default=default_page_size, type=int)
+    page_number = request.args.get('page_number', default=1, type=int)
     db = open_mongodb_connection()
     # search_string = ''
     filter_json = {"$or": [
@@ -119,10 +118,21 @@ def get_records():
     }
 
     sort_by = [('_id', 1)]
+
     cursor = db.find(
         filter=filter_json,
         sort=sort_by,
+        limit=page_size,
+        skip=page_size * (page_number - 1)
+        # batch_size=3
+        # TODO batch_size is not working
     )
+
+    documents_count = cursor.count()
+    # documents_count = cursor.count_documents()
+    print(f'documents_count: {documents_count}')
+    if page_size > 0:
+        number_of_pages = int((documents_count - 1) / page_size) + 1
 
     # results = list(cursor)
 
@@ -130,7 +140,10 @@ def get_records():
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
 
-    return render_template('list_records_results_div.html', cursor=cursor)
+    # return render_template('list_records_results_div.html', cursor=cursor)
+    return render_template('list_records_results_div.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
+                           page_number=page_number, number_of_pages=number_of_pages, page_size=page_size)
+
     # return str(results)
 
 
