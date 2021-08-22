@@ -89,15 +89,15 @@ def list_records():
     )
 
     pagination = Pagination(page=1, total=cursor.count(), search=filter_json, record_name='cursor')
-
-
+    print(pagination.info)
     documents_count = cursor.count()
     # print(f'documents_count: {documents_count}')
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
 
     return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
-                           page_number=page_number, number_of_pages=number_of_pages, page_size=page_size, pagination=pagination)
+                           page_number=page_number, number_of_pages=number_of_pages, page_size=page_size,
+                           pagination=pagination)
 
 
 @app.route("/get_records", methods=['GET', 'POST'])
