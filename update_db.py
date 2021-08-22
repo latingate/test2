@@ -51,7 +51,10 @@ def list_records_new():
 @app.route("/", methods=['GET'])
 @app.route("/list_records", methods=['GET'])
 def list_records():
+    # TODO flask_pagination
     # flask pagination: https://harishvc.com/2015/04/15/pagination-flask-mongodb/
+    # https://pythonhosted.org/Flask-paginate/
+    # https://www.youtube.com/watch?v=PSWf2TjTGNY
     search_string = request.args.get('search_string') if request.form.get('search_string') else ''
     default_page_size = 4
     page_size = request.args.get('page_size', default=default_page_size, type=int)
