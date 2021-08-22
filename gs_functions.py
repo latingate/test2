@@ -4,6 +4,8 @@
 import sys
 import time
 from pymongo import MongoClient
+import hashlib, binascii, os
+import base64
 
 
 # System Functions
@@ -42,5 +44,41 @@ def str_to_date_object(string):
     # dd.mm.yyyy
     return time.strptime(string, "%d.%m.%Y")
 
+
 # User Functions
 # ================
+
+
+def hash_password(password):
+    """Hash a password for storing."""
+    salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
+    print(f'salt: {salt}')
+    pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'),
+                                  salt, 100000)
+    pwdhash = binascii.hexlify(pwdhash)
+    return (salt + pwdhash).decode('ascii')
+
+
+def verify_password(stored_password, provided_password):
+    """Verify a stored password against one provided by user"""
+    salt = stored_password[:64]
+    stored_password = stored_password[64:]
+    pwdhash = hashlib.pbkdf2_hmac('sha512',
+                                  provided_password.encode('utf-8'),
+                                  salt.encode('ascii'),
+                                  100000)
+    pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+    return pwdhash == stored_password
+
+
+def encrypt_string(string, key):
+    string_plus_key = key + string
+    string_to_encode = string_plus_key.encode("utf-8")
+    return base64.b64encode(string_to_encode)
+
+
+def decrypt_tring(string, key):
+    decrypted_string = base64.b64decode(string)[len(key):]
+    return decrypted_string
+
+
