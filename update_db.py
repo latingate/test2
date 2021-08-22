@@ -89,7 +89,6 @@ def list_records():
     )
 
     pagination = Pagination(page=1, total=cursor.count(), search=filter_json, record_name='cursor')
-    print(pagination.info)
     documents_count = cursor.count()
     # print(f'documents_count: {documents_count}')
     if page_size > 0:
