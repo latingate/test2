@@ -23,7 +23,7 @@
             )
                 .done(function (data) {
                     {#alert('ajax ok');#}
-                    $('#results_list').html('ajax succeed!!<br/>data received:<br/>' + data);
+                    $('#results_list').html('ajax succeed!!<br/>data received:<br/>' + data + '<br/>End');
                     showText("OK")
                 })
                 .fail(function () {
@@ -59,13 +59,13 @@
     <div id="results_list" name='results_list'>
         {% include 'list_records_results_div.html' %}
 
-{#                {% for document in cursor %}#}
-{#                    {% set doc_id = document['_id'] %}#}
-{#                    <br/>#}
-{#                    {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}#}
-{#                    <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>#}
-{#                    <span id="edit2">Edit2</span>#}
-{#                {% endfor %}#}
+        {#                {% for document in cursor %}#}
+        {#                    {% set doc_id = document['_id'] %}#}
+        {#                    <br/>#}
+        {#                    {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}#}
+        {#                    <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>#}
+        {#                    <span id="edit2">Edit2</span>#}
+        {#                {% endfor %}#}
     </div>
     {% if number_of_pages > 1 %}
         <br/><br/>

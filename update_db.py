@@ -98,7 +98,9 @@ def list_records():
 
 @app.route("/get_records", methods=['GET', 'POST'])
 def get_records():
+    print(request.args.get('search_string'))
     search_string = request.form.get('search_string') if request.form.get('search_string') else ''
+    print(f'search_string = {search_string}')
     db = open_mongodb_connection()
     # search_string = ''
     filter_json = {"$or": [
@@ -123,15 +125,14 @@ def get_records():
         sort=sort_by,
     )
 
-    results = list(cursor)
+    # results = list(cursor)
 
     # print(results)
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
 
-    # return render_template('list_records_results_div.html', cursor=cursor)
-    # return str(cursor)
-    return str(results)
+    return render_template('list_records_results_div.html', cursor=cursor)
+    # return str(results)
 
 
 @app.route("/edit_record/<user_id>")
