@@ -1,8 +1,12 @@
+{{ pagination.info }}
+{{ pagination.links }}
+
 {% for document in cursor %}
-    {% set doc_id = document['_id'] %}
+    {% set doc_id = document._id %}
     <br/>
-    {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}
+    #{{ loop.index + pagination.skip }} {{ document._id }} - {{ document.name.first }} {{ document.name.last }}
     <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>
     <span id="edit2">Edit2</span>
 {% endfor %}
 
+{{ pagination.links }}
