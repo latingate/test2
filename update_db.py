@@ -88,9 +88,10 @@ def list_records():
         # TODO batch_size is not working
     )
 
-    pagination = Pagination(page=1, total=4, per_page=page_size, search=filter_json, record_name='records')
     documents_count = cursor.count()
-    # print(f'documents_count: {documents_count}')
+
+    pagination = Pagination(page=1, total=documents_count, per_page=page_size, search=filter_json, record_name='records')
+
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
     else:
@@ -137,9 +138,9 @@ def get_records():
         # TODO batch_size is not working
     )
 
-    pagination = Pagination(page=1, total=4, per_page=page_size, search=filter_json, record_name='records')
-
     documents_count = cursor.count()
+
+    pagination = Pagination(page=1, total=documents_count, per_page=page_size, search=filter_json, record_name='records')
 
     # documents_count = cursor.count_documents()
     print(f'documents_count: {documents_count}')
