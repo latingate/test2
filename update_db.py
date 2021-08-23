@@ -88,11 +88,14 @@ def list_records():
         # TODO batch_size is not working
     )
 
-    pagination = Pagination(page=1, total=cursor.count(), search=filter_json, record_name='cursor')
+    pagination = Pagination(page=1, total=4, per_page=page_size, search=filter_json, record_name='records')
     documents_count = cursor.count()
     # print(f'documents_count: {documents_count}')
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
+    else:
+        number_of_pages = 0
+
 
     return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
                            page_number=page_number, number_of_pages=number_of_pages, page_size=page_size,
