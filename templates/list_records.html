@@ -5,14 +5,19 @@
 
 {% block head_contents %}
     <script>
+        {#function filter_submit(page_number, ev) {#}
+
         function filter_submit(ev) {
             $('#result').text('trying to fetch results for search_string=' + $('#search_string').val());
             ev.preventDefault();
             $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: {{ url_for("get_records")|tojson }},
                     {#data: $(this).serialize()#}
-                    data: {"search_string": $('#search_string').val()},
+                    data: {
+                        "search_string": $('#search_string').val(),
+                        {#"page_number": page_number.toString(),#}
+                    },
                     {#data: $('#search_string').val().serialize(),#}
                     {#.serialize() - is this a must??#}
                 }
@@ -31,8 +36,6 @@
                     {#alert("displayed anyway");#}
                     //showText('displayed anyway');
                 })
-
-
         }
 
         function display_results() {
@@ -52,19 +55,15 @@
     <form action="" method="POST">
         <input id="search_string" name="search_string" type="text"/>
         <input id='submit' type='submit' value="filter"><br/>
-{#        <br/><span> Result: <span id="result"></span></span><br/>#}
-        <br/>Page {{ page_number }} of {{ number_of_pages }}
-        <div id="results_list" name='results_list'>
-            {% include 'list_records_results_div.html' %}
+    </form>
+    {#        <br/><span> Result: <span id="result"></span></span><br/>#}
+    <br/>Page {{ page_number }} of {{ number_of_pages }}
 
-            {#                {% for document in cursor %}#}
-            {#                    {% set doc_id = document['_id'] %}#}
-            {#                    <br/>#}
-            {#                    {{ document['_id'] }} - {{ document['name']['first'] }} {{ document['name']['last'] }}#}
-            {#                    <a href="/edit_record/{{ doc_id }}" id="edit_{{ doc_id }}">Edit</a>#}
-            {#                    <span id="edit2">Edit2</span>#}
-            {#                {% endfor %}#}
-        </div>
+    <div id="results_list" name='results_list'>
+        {% include 'list_records_results_div.html' %}
+    </div>
+
+    <div id="pagination">
         {% if number_of_pages > 1 %}
             <br/><br/>
             {% if page_number > 1 %}
@@ -74,16 +73,29 @@
                 <a href="{{ url_for('list_records', method='POST', page_number=page, page_size=page_size) }}">{{ page }}</a>
             {% endfor %}
             {% if page_number < number_of_pages %}
-                <a href="{{ url_for('list_records', method='POST', page_number=1+page_number, page_size=page_size) }}">Next</a>
+                <a id="next"
+                   href="{{ url_for('list_records', method='POST', page_number=1+page_number, page_size=page_size) }}">Next</a>
+                <em id="next_record" name="next_record">NEXT RECORD</em>
             {% endif %}
         {% endif %}
-    </form>
+    </div>
 {% endblock contents %}
 
 {% block end %}
     <script>
-        {#user either html form submit or javascript + ajax / jquery#}
-        $('#submit').on('click', filter_submit);
+        {#use either html form submit or javascript + ajax / jquery#}
+        $('#submit').on('click', filter_submit;
+
+        $(document).on('click', '#next_record', function () {
+            {#alert("test");#}
+            filter_submit;
+        });
+
+        {#$('#next_record').onclick(function () {#}
+        {#    alert("test");#}
+        {#    filter_submit(2);#}
+        {#})
+        #}
     </script>
 
 {% endblock %}

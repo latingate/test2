@@ -1,8 +1,10 @@
 <br/>pagination.info: {{ pagination.info }}
 <br/>pagination.links: {{ pagination.links }}
-<br/>total of {{ pagination.found }} documents found for this query
-<br/>This is page #{{ pagination.page }}
 
+<b>
+    <br/>total records found: {{ pagination.found }}
+    <br/>This is page #{{ pagination.page }}
+</b>
 {% for document in cursor %}
     {% set doc_id = document._id %}
     <br/>

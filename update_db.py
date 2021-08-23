@@ -56,7 +56,7 @@ def list_records():
     # https://pythonhosted.org/Flask-paginate/
     # https://www.youtube.com/watch?v=PSWf2TjTGNY
     search_string = request.args.get('search_string') if request.form.get('search_string') else ''
-    default_page_size = 4
+    default_page_size = 3
     page_size = request.args.get('page_size', default=default_page_size, type=int)
     page_number = request.args.get('page_number', default=1, type=int)
     # return jsonify(f"page_size: {page_size}", f"page_number: {page_number}")
@@ -105,10 +105,14 @@ def list_records():
 
 @app.route("/get_records", methods=['GET', 'POST'])
 def get_records():
-    search_string = request.form.get('search_string') if request.form.get('search_string') else ''
-    default_page_size = 4
+    default_page_size = 3
+    search_string = request.args.get('search_string') if request.args.get('search_string') else ''
     page_size = request.args.get('page_size', default=default_page_size, type=int)
     page_number = request.args.get('page_number', default=1, type=int)
+    print(f'/get_records - request.form: {request.form}')
+    print(f'/get_records - request.args: {request.args}')
+    print(f'/get_records - search_string: {search_string}')
+    print(f'/get_records - page_number: {page_number}')
     db = open_mongodb_connection()
     # search_string = ''
     filter_json = {"$or": [
@@ -151,8 +155,8 @@ def get_records():
     # print(results)
     # return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by)
     # return jsonify(cursor=cursor, search_string=search_string)
-
     # return render_template('list_records_results_div.html', cursor=cursor)
+
     return render_template('list_records_results_div.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
                            page_number=page_number, number_of_pages=number_of_pages, page_size=page_size,
                            pagination=pagination)
