@@ -90,7 +90,7 @@ def list_records():
 
     documents_count = cursor.count()
 
-    pagination = Pagination(page=page_number, per_page=page_size, found=documents_count, search=filter_json,
+    pagination = Pagination(page=page_number, per_page=page_size, found=documents_count, search=True,
                             record_name='records', css_framework='bootstrap4')
 
     if page_size > 0:
@@ -140,7 +140,7 @@ def get_records():
 
     documents_count = cursor.count()
 
-    pagination = Pagination(page=page_number, per_page=page_size, found=documents_count, search=filter_json,
+    pagination = Pagination(page=page_number, per_page=page_size, found=documents_count, search=True,
                             record_name='records', css_framework='bootstrap4')
 
     if page_size > 0:
