@@ -90,13 +90,13 @@ def list_records():
 
     documents_count = cursor.count()
 
-    pagination = Pagination(page=1, total=documents_count, per_page=page_size, search=filter_json, record_name='records')
+    pagination = Pagination(page=page_number, per_page=page_size, found=documents_count, search=filter_json,
+                            record_name='records', css_framework='bootstrap4')
 
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
     else:
         number_of_pages = 0
-
 
     return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
                            page_number=page_number, number_of_pages=number_of_pages, page_size=page_size,
@@ -140,12 +140,15 @@ def get_records():
 
     documents_count = cursor.count()
 
-    pagination = Pagination(page=1, total=documents_count, per_page=page_size, search=filter_json, record_name='records')
+    pagination = Pagination(page=page_number, per_page=page_size, found=documents_count, search=filter_json,
+                            record_name='records', css_framework='bootstrap4')
 
     # documents_count = cursor.count_documents()
     print(f'documents_count: {documents_count}')
     if page_size > 0:
         number_of_pages = int((documents_count - 1) / page_size) + 1
+    else:
+        number_of_pages = 0
 
     # results = list(cursor)
 
@@ -155,7 +158,8 @@ def get_records():
 
     # return render_template('list_records_results_div.html', cursor=cursor)
     return render_template('list_records_results_div.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
-                           page_number=page_number, number_of_pages=number_of_pages, page_size=page_size, pagination=pagination)
+                           page_number=page_number, number_of_pages=number_of_pages, page_size=page_size,
+                           pagination=pagination)
 
     # return str(results)
 
