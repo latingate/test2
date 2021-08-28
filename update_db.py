@@ -42,7 +42,7 @@ def upload_to_db():
     return render_template('upload_to_db.html')
 
 
-def allowed_extension(filename):s
+def allowed_extension(filename):
     ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png']
     # file_extension = os.path.splitext(filename)[1].rsplit('.', 1)[1].lower()
     # return '.' in filename and file_extension in ALLOWED_EXTENSIONS
