@@ -1,14 +1,21 @@
 from flask import Flask, redirect, request, render_template, request, session, url_for, jsonify
+from flask_pymongo import PyMongo
 from flask_paginate import Pagination, get_page_parameter
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from dataclasses import dataclass
+from datetime import datetime
 import json
 import os
 
 from gs_functions import *
 
 app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/tstdb"
+tstdb_mongo = PyMongo(app)
+
+
+# x = tstdb_mongo_db.db.tst2.find({'name.first': 'Gal'})
 
 
 @dataclass(init=False)
@@ -28,6 +35,26 @@ class User:
     initials: str
     age: int
     pics: dict
+
+@app.route('/upload_to_db')
+def upload_to_db():
+    return render_template('upload_to_db.html')
+
+
+@app.route('/upload_to_db_process', methods=['POST'])
+def upload_to_db_process():
+    # print(request.files)
+    if 'files[]' in request.files:
+        files = request.files.getlist('files[]')
+        for file in files:
+            print(file)
+            # if file_name == 'image':
+            # image = request.files[file_name]
+            tstdb_mongo.save_file(file.filename, file)
+            tstdb_mongo.db.upload_images.insert({'date_time': datetime.now(), 'file_name': file.filename})
+        return 'image(s) uploaded'
+    else:
+        return "image(s) not uploaded"
 
 
 @app.route("/ajax_include", methods=['POST', 'GET'])
