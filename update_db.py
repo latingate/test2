@@ -36,22 +36,25 @@ class User:
     age: int
     pics: dict
 
+
 @app.route('/upload_to_db')
 def upload_to_db():
     return render_template('upload_to_db.html')
 
 
+def allowed_extension(filename):
+    ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png']
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 @app.route('/upload_to_db_process', methods=['POST'])
 def upload_to_db_process():
-    # print(request.files)
     if 'files[]' in request.files:
         files = request.files.getlist('files[]')
         for file in files:
-            print(file)
-            # if file_name == 'image':
-            # image = request.files[file_name]
-            tstdb_mongo.save_file(file.filename, file)
-            tstdb_mongo.db.upload_images.insert({'date_time': datetime.now(), 'file_name': file.filename})
+            if file and allowed_extension(file.filename):
+                tstdb_mongo.save_file(file.filename, file)
+                tstdb_mongo.db.upload_images.insert({'date_time': datetime.now(), 'file_name': file.filename})
         return 'image(s) uploaded'
     else:
         return "image(s) not uploaded"
