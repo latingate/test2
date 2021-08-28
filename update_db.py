@@ -44,6 +44,8 @@ def upload_to_db():
 
 def allowed_extension(filename):
     ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png']
+    # file_extension = os.path.splitext(filename)[1].rsplit('.', 1)[1].lower()
+    # return '.' in filename and file_extension in ALLOWED_EXTENSIONS
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
