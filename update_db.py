@@ -8,7 +8,13 @@ import os
 
 from gs_functions import *
 
+# blueprints
+from flask_blueprint_test import flask_blueprint_test
+from flask_test import flask_test
+
 app = Flask(__name__)
+app.register_blueprint(flask_blueprint_test)
+app.register_blueprint(flask_test)
 
 
 @dataclass(init=False)
@@ -316,6 +322,8 @@ def add_db_user():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
+# ,  use_reloader=False
+
 
 # ajax - result-->
 # $(#div).html = render(get_results)
