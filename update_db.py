@@ -14,11 +14,9 @@ from gs_functions import *
 from flask_blueprint_test import flask_blueprint_test
 
 app = Flask(__name__)
+app.register_blueprint(flask_blueprint_test)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/tstdb"
 tstdb_mongo = PyMongo(app)
-
-# x = tstdb_mongo_db.db.tst2.find({'name.first': 'Gal'})
-app.register_blueprint(flask_blueprint_test)
 
 
 @dataclass(init=False)
