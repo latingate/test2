@@ -1,0 +1,12 @@
+{% extends "base_template.html" %}
+
+{% set title = 'Upload file to mongodb' %}
+
+
+{% block contents %}
+    <form method="POST" action="upload_to_db_process" enctype="multipart/form-data">
+        <input type='file' name="files[]" multiple>
+        <input type="submit">
+    </form>
+
+{% endblock contents %}

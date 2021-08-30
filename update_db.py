@@ -1,8 +1,10 @@
 from flask import Flask, redirect, request, render_template, request, session, url_for, jsonify
+from flask_pymongo import PyMongo
 from flask_paginate import Pagination, get_page_parameter
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from dataclasses import dataclass
+from datetime import datetime
 import json
 import os
 
@@ -13,6 +15,11 @@ from flask_blueprint_test import flask_blueprint_test
 from flask_test import flask_test
 
 app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb://localhost:27017/tstdb"
+tstdb_mongo = PyMongo(app)
+
+
+# x = tstdb_mongo_db.db.tst2.find({'name.first': 'Gal'})
 app.register_blueprint(flask_blueprint_test)
 app.register_blueprint(flask_test)
 
@@ -34,6 +41,31 @@ class User:
     initials: str
     age: int
     pics: dict
+
+
+@app.route('/upload_to_db')
+def upload_to_db():
+    return render_template('upload_to_db.html')
+
+
+def allowed_extension(filename):
+    ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png']
+    # file_extension = os.path.splitext(filename)[1].rsplit('.', 1)[1].lower()
+    # return '.' in filename and file_extension in ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/upload_to_db_process', methods=['POST'])
+def upload_to_db_process():
+    if 'files[]' in request.files:
+        files = request.files.getlist('files[]')
+        for file in files:
+            if file and allowed_extension(file.filename):
+                tstdb_mongo.save_file(file.filename, file)
+                tstdb_mongo.db.upload_images.insert({'date_time': datetime.now(), 'file_name': file.filename})
+        return 'image(s) uploaded'
+    else:
+        return "image(s) not uploaded"
 
 
 @app.route("/ajax_include", methods=['POST', 'GET'])

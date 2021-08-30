@@ -3,5 +3,6 @@ PyQt5~=5.15.4
 Flask~=2.0.1
 mongoengine~=0.23.1
 flask_paginate
+flask_pymongo
 flask_dropzone
 flask_uploads
