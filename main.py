@@ -244,8 +244,8 @@ while True:
         x = int(input('enter a number: '))
         y = int(x / 0)
         # break
-    except ValueError:
-        print("Oops!  That was no valid number.  Try again...")
+    except ValueError as err:
+        print("Oops!  That was no valid number.  Try again...", err)
         print(ValueError)
     # except ZeroDivisionError:
     #     print("divided by zero")
