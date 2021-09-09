@@ -243,7 +243,7 @@ while True:
     try:
         x = int(input('enter a number: '))
         y = int(x / 0)
-        # break
+        break
     except ValueError as err:
         print("Oops!  That was no valid number.  Try again...", err)
         print(ValueError)
