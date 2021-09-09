@@ -5,6 +5,7 @@ from ftplib import FTP
 from dataclasses import dataclass
 import logging
 import json
+import sys
 
 
 def stop():
@@ -238,7 +239,19 @@ ftp.close()
 
 # ftp.quit()
 
+while True:
+    try:
+        x = int(input('enter a number: '))
+        y = int(x / 0)
+        # break
+    except ValueError:
+        print("Oops!  That was no valid number.  Try again...")
+        print(ValueError)
+    # except ZeroDivisionError:
+    #     print("divided by zero")
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        # raise
+
 
 # press_any_key()
-
-
