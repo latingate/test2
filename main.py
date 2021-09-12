@@ -241,8 +241,9 @@ ftp.close()
 
 while True:
     try:
-        x = int(input('enter a number: '))
-        y = int(x / 0)
+        x = int(input('enter a number (0 to stop): '))
+        if x != 0:
+            y = int(x / 0)
         break
     except ValueError as err:
         print("Oops!  That was no valid number.  Try again...", err)
@@ -252,6 +253,5 @@ while True:
     except:
         print("Unexpected error:", sys.exc_info()[0])
         # raise
-
 
 # press_any_key()
