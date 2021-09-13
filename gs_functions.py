@@ -4,7 +4,7 @@ import sys
 import os
 import time
 from pymongo import MongoClient
-import hashlib, binascii, os
+import hashlib, binascii
 import base64
 import configparser
 
@@ -14,8 +14,8 @@ import configparser
 config = configparser.ConfigParser()
 config.read(os.path.join(os.path.dirname(__file__) , 'gs_config.ini'))
 # config.read('gs_config.ini')
-print(config['mongoDB']['host'])
-print(config.sections())
+# print(config['mongoDB']['host'])
+# print(config.sections())
 
 
 # System Functions
