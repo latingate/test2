@@ -358,5 +358,4 @@ if __name__ == '__main__':
 # ajax - result-->
 # $(#div).html = render(get_results)
 # ajax render template flask
-
 #
