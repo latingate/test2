@@ -3,19 +3,11 @@
 import sys
 import os
 import time
+from pathlib import Path
 from pymongo import MongoClient
 import hashlib, binascii
 import base64
 import configparser
-
-# read config file
-# ================
-
-config = configparser.ConfigParser()
-config.read(os.path.join(os.path.dirname(__file__) , 'gs_config.ini'))
-# config.read('gs_config.ini')
-# print(config['mongoDB']['host'])
-# print(config.sections())
 
 
 # System Functions
@@ -28,11 +20,23 @@ def get_python_version():
     return version
 
 
+def get_path(file='.'):
+    # return os.path.dirname(__file__)
+    try:
+        if Path(file).exists():
+            return Path(file).resolve()
+        else:
+            return False
+    except:
+        return False
+
+
 def open_mongodb_connection():
     # local
     # conn = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
     # db = conn['tstdb']['tst2']
-    conn = MongoClient(f'mongodb://{config["mongoDB"]["host"]}:{config["mongoDB"]["port"]}/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
+    conn = MongoClient(
+        f'mongodb://{config["mongoDB"]["host"]}:{config["mongoDB"]["port"]}/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
     db = conn[config['mongoDB']['database']][config['mongoDB']['collection']]
 
     # cloud (MongoDB Atlas)
@@ -93,3 +97,14 @@ def decrypt_tring(string, key):
     decrypted_string = base64.b64decode(string)[len(key):]
     return decrypted_string
 
+
+# read config file
+# ================
+
+config = configparser.ConfigParser()
+config_file = 'gs_config.ini'
+# config.read('gs_config.ini')
+# config.read(os.path.join(os.path.dirname(__file__), 'gs_config.ini'))
+config.read(get_path(config_file))
+# print(config['mongoDB']['host'])
+# print(config.sections())
