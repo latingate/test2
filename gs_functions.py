@@ -1,11 +1,19 @@
 # Gal Sarig's Functions
 
-
 import sys
 import time
 from pymongo import MongoClient
 import hashlib, binascii, os
 import base64
+import configparser
+
+# read config file
+# ================
+
+config = configparser.ConfigParser()
+config.read('gs_config.ini')
+# print(config['mongoDB']['host'])
+# print(config.sections())
 
 
 # System Functions
@@ -20,8 +28,10 @@ def get_python_version():
 
 def open_mongodb_connection():
     # local
-    conn = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
-    db = conn['tstdb']['tst2']
+    # conn = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
+    # db = conn['tstdb']['tst2']
+    conn = MongoClient(f'mongodb://{config["mongoDB"]["host"]}:{config["mongoDB"]["port"]}/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
+    db = conn[config['mongoDB']['database']][config['mongoDB']['collection']]
 
     # cloud (MongoDB Atlas)
     # conn = MongoClient("mongodb+srv://latingate:mgal5313b@cluster0.oss2v.mongodb.net/gal-tst-db?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE")
@@ -80,5 +90,3 @@ def encrypt_string(string, key):
 def decrypt_tring(string, key):
     decrypted_string = base64.b64decode(string)[len(key):]
     return decrypted_string
-
-

@@ -1,4 +1,5 @@
 from flask import Flask, redirect, request, render_template, request, session, url_for, jsonify
+
 from flask_dropzone import Dropzone
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 from pymongo import MongoClient
@@ -16,6 +17,7 @@ from gs_functions import *
 # to:
 # from werkzeug.utils import secure_filename
 # from werkzeug.datastructures import FileStorage
+
 
 app = Flask(__name__)
 
