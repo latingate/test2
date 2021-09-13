@@ -10,7 +10,11 @@ import os
 
 from gs_functions import *
 
+# blueprints
+from flask_blueprint_test import flask_blueprint_test
+
 app = Flask(__name__)
+app.register_blueprint(flask_blueprint_test)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/tstdb"
 tstdb_mongo = PyMongo(app)
 
@@ -347,7 +351,9 @@ def add_db_user():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)
+# ,  use_reloader=False
+
 
 # ajax - result-->
 # $(#div).html = render(get_results)
