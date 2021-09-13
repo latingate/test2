@@ -84,14 +84,23 @@ def list_records_new():
     return render_template('list_records.html', cursor=cursor)
 
 
-@app.route("/", methods=['GET'])
-@app.route("/list_records", methods=['GET'])
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/list_records", methods=['GET', 'POST'])
 def list_records():
     # TODO flask_pagination
     # flask pagination: https://harishvc.com/2015/04/15/pagination-flask-mongodb/
     # https://pythonhosted.org/Flask-paginate/
     # https://www.youtube.com/watch?v=PSWf2TjTGNY
-    search_string = request.args.get('search_string') if request.form.get('search_string') else ''
+    search_string = ''
+    # search_string = request.args.get('search_string') if request.form.get('search_string') else ''
+    if request.args.get('search_string'):
+        search_string = request.args.get('search_string')
+    if request.form.get('search_string'):
+        search_string = request.form.get('search_string')
+
+    # search_string = request.args.get('search_string')
+    # if request.form.get('search_string'):
+    #     search_string = request.form.get('search_string')
     default_page_size = 3
     page_size = request.args.get('page_size', default=default_page_size, type=int)
     page_number = request.args.get('page_number', default=1, type=int)
@@ -136,7 +145,7 @@ def list_records():
 
     return render_template('list_records.html', cursor=cursor, filter_json=filter_json, sort_by=sort_by,
                            page_number=page_number, number_of_pages=number_of_pages, page_size=page_size,
-                           pagination=pagination)
+                           pagination=pagination, time=datetime.now())
 
 
 @app.route("/get_records", methods=['GET', 'POST'])
