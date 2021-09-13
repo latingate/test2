@@ -6,3 +6,4 @@ flask_paginate
 flask_pymongo
 flask_dropzone
 flask_uploads
+waitress
