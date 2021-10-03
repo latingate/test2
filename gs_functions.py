@@ -26,6 +26,7 @@ def get_path(file='.'):
         if Path(file).exists():
             return Path(file).resolve()
         else:
+            print('*')
             return False
     except:
         return False
