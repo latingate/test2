@@ -1,4 +1,3 @@
-
 import spf
 
 print(spf.check(i='103.47.205.84', s='gal2016@latingate.com', h='smtp2go.com'))
