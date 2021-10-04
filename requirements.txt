@@ -6,4 +6,5 @@ flask_paginate
 flask_pymongo
 flask_dropzone
 flask_uploads
-waitress
+waitress~=2.0.0
+pyspf~=2.0.14
