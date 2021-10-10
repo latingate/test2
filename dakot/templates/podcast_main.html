@@ -1,0 +1,14 @@
+{% extends "podcast_base_template.html" %}
+
+{% set title = 'דקות של שירה' %}
+{% set page_header = 'דקות של שירה' %}
+
+{% block head_contents %}
+{% endblock %}
+
+
+{% block contents %}
+    {{ number_of_episodes }} episodes
+    <p></p>
+    <a href="{{ episodes[1].enclosure_url }}">listen</a>
+{% endblock contents %}

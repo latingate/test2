@@ -26,8 +26,8 @@ def get_path(file='.'):
         if Path(file).exists():
             return Path(file).resolve()
         else:
-            print('*')
-            return False
+            print('*err - Path does not exists')
+            return ''
     except:
         return False
 

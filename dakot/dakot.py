@@ -2,6 +2,15 @@ from flask import Flask, redirect, request, render_template, request, session, u
 from flask_pymongo import PyMongo
 from flask_paginate import Pagination, get_page_parameter
 
+from pyPodcastParser.Podcast import Podcast
+import requests
+
+request = requests.get('https://anchor.fm/s/29360f3c/podcast/rss')
+podcast = Podcast(request.content)
+
+# https://pypodcastparser.readthedocs.io/en/latest/index.html
+# https://podcastparser.readthedocs.io/en/latest/
+
 from gs_functions import *
 
 app = Flask(__name__)
@@ -9,7 +18,10 @@ app = Flask(__name__)
 
 @app.route('/podcast')
 def podcast_main():
-    return render_template('podcast_main.html')
+    number_of_episodes = len(podcast.items)
+    episodes = podcast.items
+    print(podcast.items[1].enclosure_url)
+    return render_template('podcast_main.html',number_of_episodes=number_of_episodes, episodes=episodes)
 
 
 if __name__ == '__main__':
