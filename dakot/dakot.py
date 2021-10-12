@@ -28,6 +28,8 @@ if __name__ == '__main__':
     # use the line below to run flask server directly (not recommended for production)
     app.run(host='0.0.0.0', port=5000, debug=True)
     # , use_reloader=False
+    # , ssl_context = 'adhoc'
+    # , ssl_context=('cert.pem', 'key.pem'))
 
     # use the line below to run flask through waitress server, and than run waitress_server.py from pycharm or directly from command line using: python waitress_server.py
     # app = Flask(__name__)
