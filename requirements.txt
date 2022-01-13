@@ -8,3 +8,6 @@ flask_dropzone
 flask_uploads
 waitress~=2.0.0
 pyspf~=2.0.14
+requests~=2.26.0
+pyPodcastParser~=2.0.0
+art~=5.4
