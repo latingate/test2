@@ -22,8 +22,27 @@ audiofile.tag.artist = "שם האומן"
 audiofile.tag.album = "שם האלבום"
 audiofile.tag.album_artist = "שם אומן באלבום"
 audiofile.tag.title = "שם השיר"
-audiofile.tag.track_num = 2
+audiofile.tag.composer = 'מלחין'
+audiofile.tag.track_num = 1
+audiofile.tag.recording_date= '2019'
+audiofile.tag.publisher = 'לייבל'
+audiofile.tag.genre = 'Pop'
+audiofile.tag.bpm = 130
+audiofile.tag.artist_url = 'https://GalSarig.com'
+audiofile.tag.publisher_url = 'https://GalSarig.com'
+audiofile.tag.copyright = 'all rights reserved'
+audiofile.tag.language = 'Hebrew'
 
+# not working
+# audiofile.tag.disc_number = '12345'
+# audiofile.tag.comment = '111'
+# audiofile.tag.comments = '22222'
+
+# Clear all tags (excluding images)
+# audiofile.tag.clear()
+
+# not working
+# audiofile.tag.comments = 'הערות'
 
 # audiofile.tag.images.set(type_=3, img_data=None, mime_type=None, description=u"you can put a description here", img_url=u"https://upload.wikimedia.org/wikipedia/en/6/60/Recovery_Album_Cover.jpg")
 # audiofile.tag.images.set(ImageFrame.FRONT_COVER, open('song.jpg','rb').read(), 'image/jpeg')
