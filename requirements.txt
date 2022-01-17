@@ -11,3 +11,4 @@ pyspf~=2.0.14
 requests~=2.26.0
 pyPodcastParser~=2.0.0
 art~=5.4
+eyed3~=0.9.6
