@@ -92,5 +92,4 @@ def removeAllImages(objMp3):
 # print(audiofile.tag.images[1]._pic_type)
 # print(artPic)
 
-
 print(edit_mp3())
