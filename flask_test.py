@@ -5,7 +5,8 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_cl
 from pymongo import MongoClient
 import json
 import os
-import  mp3_id3_tags_eyed
+
+from mp3_id3_tags_eyed import edit_mp3
 
 from gs_functions import *
 
@@ -212,8 +213,7 @@ def site_map():
 
 @app.route("/mp3")
 def mp3tag():
-    return "ok"
-
+    return edit_mp3()
 
 
 if __name__ == '__main__':
