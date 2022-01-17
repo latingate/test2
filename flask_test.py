@@ -211,8 +211,8 @@ def site_map():
     return jsonify(links)
 
 
-@app.route("/mp3")
-def mp3tag():
+@app.route("/mp3edit")
+def mp3edit():
     return edit_mp3()
 
 
