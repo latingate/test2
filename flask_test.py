@@ -5,6 +5,7 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_cl
 from pymongo import MongoClient
 import json
 import os
+import  mp3_id3_tags_eyed
 
 from gs_functions import *
 
@@ -26,7 +27,7 @@ dropzone = Dropzone(app)
 # Dropzone settings
 app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
 app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
-app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*'
+app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*, .pdf'
 app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
 
 # Uploads settings
@@ -207,6 +208,12 @@ def site_map():
             links.append((url, rule.endpoint))
     # links is now a list of url, endpoint tuples
     return jsonify(links)
+
+
+@app.route("/mp3")
+def mp3tag():
+    return "ok"
+
 
 
 if __name__ == '__main__':
