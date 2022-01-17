@@ -7,7 +7,6 @@ import json
 import os
 
 from mp3_id3_tags_eyed import edit_mp3
-
 from gs_functions import *
 
 # Drag & Drop upload

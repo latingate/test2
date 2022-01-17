@@ -10,8 +10,20 @@ from eyed3.id3.frames import ImageFrame
 # Another package:
 # https://mutagen.readthedocs.io/en/latest/
 
+
+# remove all images
+def removeAllImages(objMp3):
+    toRemove = [x.description for x in objMp3.tag.images]
+    counterRemoved = 0
+    for desc in toRemove:
+        if (objMp3.tag.images.remove(desc)):
+            counterRemoved += 1
+    return counterRemoved
+
+
 def edit_mp3():
     audiofile = eyed3.load("song.mp3")
+    removeAllImages(audiofile)
 
     if (audiofile.tag == None):
         audiofile.initTag()
@@ -70,15 +82,6 @@ def removeImage(objMp3, desc):
         return False
 
 
-# remove all images
-def removeAllImages(objMp3):
-    toRemove = [x.description for x in objMp3.tag.images]
-    counterRemoved = 0
-    for desc in toRemove:
-        if (objMp3.tag.images.remove(desc)):
-            counterRemoved += 1
-    return counterRemoved
-
 
 # imageDescriptions = [x.description for x in audiofile.tag.images]
 # print('before removing.. ' , len(imageDescriptions) , 'image description(s) found: ' , imageDescriptions)
@@ -92,4 +95,4 @@ def removeAllImages(objMp3):
 # print(audiofile.tag.images[1]._pic_type)
 # print(artPic)
 
-print(edit_mp3())
+# print(edit_mp3())
