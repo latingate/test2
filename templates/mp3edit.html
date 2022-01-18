@@ -1,0 +1,15 @@
+{% extends "base_template.html" %}
+
+{% set title = 'mp3 tag edit' %}
+{% set page_header = 'mp3 tag edit' %}
+
+{% block head_contents %}
+    {{ dropzone.load() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 250px;') }}
+{% endblock head_contents %}
+
+{% block contents %}
+    {{ dropzone.create(action_view='upload') }}
+    {{ dropzone.create(id='dropzone_2', action_view='upload') }}
+    <br/><br/>
+{% endblock contents %}

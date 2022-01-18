@@ -33,6 +33,7 @@ app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
 # Uploads settings
 upload_folder = 'uploads'
 app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/' + upload_folder
+print(app.config['UPLOADED_PHOTOS_DEST'])
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)  # set maximum file size, default is 16MB
@@ -212,7 +213,21 @@ def site_map():
 
 @app.route("/mp3edit")
 def mp3edit():
-    return edit_mp3()
+    # Dropzone settings
+    app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
+    app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
+    app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*, audio/*'
+    app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
+
+    # Uploads settings
+    upload_folder = 'uploads'
+    app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/' + upload_folder
+    photos = UploadSet('photos', IMAGES)
+    configure_uploads(app, photos)
+    patch_request_class(app)  # set maximum file size, default is 16MB
+
+    return render_template("mp3edit.html")
+    # return edit_mp3()
 
 
 if __name__ == '__main__':

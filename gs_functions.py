@@ -69,7 +69,7 @@ def str_to_date_object(string):
 def hash_password(password):
     """Hash a password for storing."""
     salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
-    print(f'salt: {salt}')
+    # print(f'salt: {salt}')
     pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'),
                                   salt, 100000)
     pwdhash = binascii.hexlify(pwdhash)
