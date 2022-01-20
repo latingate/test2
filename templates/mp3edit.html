@@ -12,7 +12,6 @@
 
 {% block contents %}
 
-
     <div class="container" style="direction: rtl;">
         <div class="row">
             <div class="col-3"></div>
@@ -27,14 +26,13 @@
 
                 <form id="edit_record" action="/mp3edit_save" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="hidden" name="_id" id="_id" value="{{ user_id }}">
                         <label for="song_name">שם השיר</label>
-                        <input type="song_name" class="form-control" name="first_name" id="song_name">
+                        <input type="text" class="form-control" name="song_name" id="song_name">
                         <br/>
                     </div>
                     <div class="form-group">
                         <label for="artist">שם המבצע</label>
-                        <input type="artist" class="form-control" name="artist" id="artist">
+                        <input type="text" class="form-control" name="artist" id="artist">
                         <br/>
 
                         <div style="text-align: left;">

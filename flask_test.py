@@ -229,14 +229,36 @@ def mp3edit():
     return render_template("mp3edit.html")
     # return edit_mp3()
 
-@app.route("/mp3edit_save")
+
+@app.route("/mp3edit_save",methods=['POST'])
 def mp3edit_save():
-    return "/mp3edit_save"
+    data = request.form
+    song_name = data.get('song_name')
+    artist = data.get('artist')
+    print(song_name, artist)
+
+    f = request.files.get('file')
+    print(f)
+    # f.save(os.path.join('the/path/to/save', f.filename))
+
+
+    return song_name
+    # return render_template('update_confirmation.html', user='ok')
 
 
 @app.route("/mp3edit_uploads")
 def mp3edit_uploads():
+    # redirect to home if no images to display
+    if "file_urls" not in session or session['file_urls'] == []:
+        return redirect(url_for('upload'))
+
+    # set the file_urls and remove the session variable
+    file_urls = session['file_urls']
+    session.pop('file_urls', None)
+
+    return render_template('upload_results.html', file_urls=file_urls)
     return "/mp3edit_uploads"
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
