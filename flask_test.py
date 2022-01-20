@@ -211,7 +211,7 @@ def site_map():
     return jsonify(links)
 
 
-@app.route("/mp3edit")
+@app.route("/mp3edit", methods=['POST', 'GET'])
 def mp3edit():
     # Dropzone settings
     app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
@@ -226,6 +226,9 @@ def mp3edit():
     configure_uploads(app, photos)
     patch_request_class(app)  # set maximum file size, default is 16MB
 
+    if request.method == 'POST':
+        f = request.files.get('file')
+        f.save(app.config['UPLOADED_PHOTOS_DEST'],f.filename)
     return render_template("mp3edit.html")
     # return edit_mp3()
 
@@ -238,6 +241,7 @@ def mp3edit_save():
     print(song_name, artist)
 
     f = request.files.get('file')
+    # f.save(app.config['UPLOADED_PHOTOS_DEST'], f.filename)
     print(f)
     # f.save(os.path.join('the/path/to/save', f.filename))
 
