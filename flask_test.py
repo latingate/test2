@@ -28,12 +28,11 @@ dropzone = Dropzone(app)
 app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
 app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
 app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*, .pdf'
-app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
+# app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
 
 # Uploads settings
 upload_folder = 'uploads'
 app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/' + upload_folder
-print(app.config['UPLOADED_PHOTOS_DEST'])
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)  # set maximum file size, default is 16MB
@@ -72,6 +71,7 @@ app.config['SECRET_KEY'] = 'mcpYc982y3hufjWnv8'
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
+    app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
     # set session for image results
     if "file_urls" not in session:
         session['file_urls'] = []
@@ -217,7 +217,7 @@ def mp3edit():
     app.config['DROPZONE_UPLOAD_MULTIPLE'] = True
     app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
     app.config['DROPZONE_ALLOWED_FILE_TYPE'] = 'image/*, audio/*'
-    app.config['DROPZONE_REDIRECT_VIEW'] = 'upload_results'
+    # app.config['DROPZONE_REDIRECT_VIEW'] = 'mp3edit_uploads'
 
     # Uploads settings
     upload_folder = 'uploads'
@@ -229,6 +229,14 @@ def mp3edit():
     return render_template("mp3edit.html")
     # return edit_mp3()
 
+@app.route("/mp3edit_save")
+def mp3edit_save():
+    return "/mpdedit_save"
+
+
+@app.route("/mp3edit_uploads")
+def mp3edit_uploads():
+    return "/mp3edit_uploads"
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
