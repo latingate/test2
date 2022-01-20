@@ -6,6 +6,8 @@
 {% block head_contents %}
     {{ dropzone.load() }}
     {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; height: 250px; width:400px') }}
+    {{ dropzone.config(custom_init='dz = this;document.getElementById("submit").addEventListener("click", function handler(e) {dz.processQueue();});',
+                 custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 20,') }}
 {% endblock head_contents %}
 
 {% block contents %}
@@ -36,7 +38,7 @@
                         <br/>
 
                         <div style="text-align: left;">
-                            <button type="submit" class="btn btn-primary">שלח שיר</button>
+                            <button type="submit" class="btn btn-primary" id="submit">שלח שיר</button>
                         </div>
                     </div>
                     <br/>

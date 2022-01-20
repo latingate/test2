@@ -231,7 +231,7 @@ def mp3edit():
 
 @app.route("/mp3edit_save")
 def mp3edit_save():
-    return "/mpdedit_save"
+    return "/mp3edit_save"
 
 
 @app.route("/mp3edit_uploads")
