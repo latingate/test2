@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Flask-File Drag Drop System</title>
+{% extends "base_template.html" %}
+
+{% set title = 'tst_dropzone mp3 tag edit' %}
+{% set page_header = 'tst_dropzone mp3 tag edit' %}
+
+{% block head_contents %}
     {{ dropzone.load_css() }}
     {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; width=250px; min-height: 400px; direction:rtl') }}
+{% endblock head_contents %}
 
-</head>
-<body>
-<div style="color:blue;text-align:center;border: 4px solid #0087F7;">File drag & Drop System with flask dropzone</div>
+{% block contents %}
 
-{{ dropzone.create(action='upload') }}
-{{ dropzone.load_js() }}
-{{ dropzone.config() }}
-{#{{ dropzone.config(max_files=10, timeout=10000, default_message='גרור לפה קובץ mp3 וקובץ תמונה במידה ויש') }}#}
+    {{ dropzone.create(action='upload') }}
+    {{ dropzone.load_js() }}
+    {{ dropzone.config() }}
+    {#{{ dropzone.config(max_files=10, timeout=10000, default_message='גרור לפה קובץ mp3 וקובץ תמונה במידה ויש') }}#}
 
-</body>
-</html>
+{% endblock contents %}
