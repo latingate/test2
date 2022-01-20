@@ -17,6 +17,9 @@ app.config.update(
     DROPZONE_ALLOWED_FILE_CUSTOM=True,
     DROPZONE_ALLOWED_FILE_TYPE='image/*, .mp3',
     DROPZONE_DEFAULT_MESSAGE='גרור לפה קובץ mp3 וקובץ תמונה (אם יש)',
+    DROPZONE_MAX_FILE_EXCEED='לא ניתן להעלות יותר קבצים',
+    DROPZONE_INVALID_FILE_TYPE='לא ניתן להעלות קבצים מסוג זה',
+    DROPZONE_FILE_TOO_BIG='הקובץ גדול מידי',
     DROPZONE_TIMEOUT=5 * 60 * 1000)
 
 dropzone = Dropzone(app)
