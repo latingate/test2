@@ -7,9 +7,10 @@ from flask_dropzone import Dropzone
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
 basedir = os.getcwd()
+upload_path = os.path.join(basedir, 'uploads')
 app = Flask(__name__)
 app.config.update(
-    UPLOADED_PATH=os.path.join(basedir, 'uploads'),
+    # DROPZONE_UPLOADED_PATH=os.path.join(basedir, 'uploads'),
     DROPZONE_MAX_FILE_SIZE=12,
     DROPZONE_MAX_FILES=2,
     DROPZONE_INPUT_NAME='files',
@@ -30,7 +31,7 @@ def upload():
     if request.method == 'POST':
         f = request.files.get('files')
         print(f)
-        f.save(os.path.join(app.config['UPLOADED_PATH'], f.filename))
+        f.save(os.path.join(upload_path, f.filename))
     return render_template('tst_dropzone.html')
 
 
