@@ -34,11 +34,14 @@ def upload():
         f = request.files.get('files')
         print(f.filename)
         print(datetime.now().strftime("%y%m%d%H%M%S") + '_' + str(int(random() * 10000)))
-        file, file_extension = os.path.splitext(f.filename)
-        if (file_extension).lower() == '.mp3':
+        file_split = os.path.splitext(f.filename)
+        file_extension = file_split[1][1:].lower()
+        print(file_extension)
+        if file_extension == 'mp3':
             print("This is mp3 file")
-        if (file_extension).lower() == '.mp3':
-            print("This is mp3 file")
+        image_file_extensions = ('jpg', 'jpeg', 'png')
+        if (file_extension in image_file_extensions):
+            print("This is image file")
         f.save(os.path.join(upload_path, f.filename))
     return render_template('tst_dropzone.html')
 
