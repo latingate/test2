@@ -2,6 +2,8 @@ import os
 
 from flask import Flask, render_template, request
 from flask_dropzone import Dropzone
+from datetime import datetime
+from random import random
 
 # https://flask-dropzone.readthedocs.io/en/latest/configuration.html
 
@@ -30,9 +32,29 @@ dropzone = Dropzone(app)
 def upload():
     if request.method == 'POST':
         f = request.files.get('files')
-        print(f)
+        print(f.filename)
+        print(datetime.now().strftime("%y%m%d%H%M%S") + '_' + str(int(random() * 10000)))
+        file, file_extension = os.path.splitext(f.filename)
+        if (file_extension).lower() == '.mp3':
+            print("This is mp3 file")
+        if (file_extension).lower() == '.mp3':
+            print("This is mp3 file")
         f.save(os.path.join(upload_path, f.filename))
     return render_template('tst_dropzone.html')
+
+@app.route("/mp3edit_save", methods=['POST'])
+def mp3edit_save():
+    data = request.form
+    song_name = data.get('song_name')
+    artist = data.get('artist')
+    print(song_name, artist)
+
+    f = request.files.get('file')
+    # f.save(app.config['UPLOADED_PHOTOS_DEST'], f.filename)
+    print(f.filename)
+    # f.save(os.path.join('the/path/to/save', f.filename))
+    return song_name
+    # return render_template('update_confirmation.html', user='ok')
 
 
 if __name__ == '__main__':
