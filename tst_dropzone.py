@@ -34,8 +34,7 @@ def upload():
         f = request.files.get('files')
         print(f.filename)
         print(datetime.now().strftime("%y%m%d%H%M%S") + '_' + str(int(random() * 10000)))
-        file_split = os.path.splitext(f.filename)
-        file_extension = file_split[1][1:].lower()
+        file_extension = os.path.splitext(f.filename)[1][1:].lower()
         print(file_extension)
         if file_extension == 'mp3':
             print("This is mp3 file")
