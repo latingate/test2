@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 from flask_dropzone import Dropzone
 from datetime import datetime
 from random import random
@@ -11,6 +11,8 @@ from random import random
 basedir = os.getcwd()
 upload_path = os.path.join(basedir, 'uploads')
 app = Flask(__name__)
+app.secret_key = 'caliy!DCB8927%^rufhjcnv374ytfu'
+
 app.config.update(
     # DROPZONE_UPLOADED_PATH=os.path.join(basedir, 'uploads'),
     DROPZONE_MAX_FILE_SIZE=12,
@@ -27,16 +29,18 @@ app.config.update(
 
 dropzone = Dropzone(app)
 
-
 @app.route('/', methods=['POST', 'GET'])
 def upload():
+    # print('session_mp3:', session['mp3'])
     if request.method == 'POST':
+        if "mp3" in session:
+            print('session_mp3:',session['mp3'])
         f = request.files.get('files')
         print(f.filename)
         print(datetime.now().strftime("%y%m%d%H%M%S") + '_' + str(int(random() * 10000)))
         file_extension = os.path.splitext(f.filename)[1][1:].lower()
-        print(file_extension)
         if file_extension == 'mp3':
+            session['mp3'] = f.filename
             print("This is mp3 file")
         image_file_extensions = ('jpg', 'jpeg', 'png')
         if (file_extension in image_file_extensions):
@@ -44,18 +48,15 @@ def upload():
         f.save(os.path.join(upload_path, f.filename))
     return render_template('tst_dropzone.html')
 
+
 @app.route("/mp3edit_save", methods=['POST'])
 def mp3edit_save():
     data = request.form
     song_name = data.get('song_name')
     artist = data.get('artist')
     print(song_name, artist)
-
-    f = request.files.get('file')
-    # f.save(app.config['UPLOADED_PHOTOS_DEST'], f.filename)
-    print(f.filename)
-    # f.save(os.path.join('the/path/to/save', f.filename))
-    return song_name
+    session.clear()
+    return song_name + ' ' + artist
     # return render_template('update_confirmation.html', user='ok')
 
 
