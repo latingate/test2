@@ -55,7 +55,7 @@ def mp3edit_save():
     session['error'] = ['123']
     session['error_message'] = ['no error']
     if "mp3" not in session:
-        mp3_file=''
+        mp3_file = ''
         session['error'].append(1)
         session['error_message'].append('No mp3 file found')
         error[1] = 'no mp3'
@@ -67,13 +67,11 @@ def mp3edit_save():
     print('song name:', song_name, 'artist', artist, 'erorr codes', session['error'], 'error messages',
           session['error_message'], 'error dictioanry', error)
 
-    header_data = ('name (english)', 'name (hebrew)', 'age')
+    header_data = ()
 
     rows_data = (
-        ('Gal Sarig', 'גל שריג', 54),
-        ('Sigal Lifshitz', 'סיגל ליפשיץ', 49),
-        ('Michal Sarig', 'מיכל שריג', 20),
-        ('Zohar Gofen', 'זהר גופן', 26)
+        ('שם השיר', song_name),
+        ('שם האומן', artist)
     )
 
     table_classes = 'table-striped table-bordered table-hover'
@@ -88,7 +86,12 @@ def mp3edit_save():
     }
 
     session.clear()
-    return render_template('tst_dropzone_results.html', song_name=song_name, artist=artist, mp3_file=mp3_file, error=error)
+    return render_template('tst_dropzone_results.html', song_name=song_name, artist=artist, mp3_file=mp3_file,
+                           error=error,
+                           header_data=header_data, rows_data=rows_data, table_classes=table_classes,
+                           header_classes=header_classes, row_classes=row_classes, cell_classes=cell_classes,
+                           col_classes=col_classes
+                           )
     # return render_template('update_confirmation.html', user='ok')
 
 
