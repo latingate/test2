@@ -15,7 +15,19 @@ class MP3tags:
         self.file: str = ''
         self.song_name: str = ''
         self.artist: str = ''
+        self.album_artist: str = ''
         self.image_front_cover: str = ''
+        self.album_name: str = ''
+        self.composer: str = ''
+        self.publisher: str = ''
+        self.genre: str = ''
+        self.copyright: str = ''
+        self.language: str = ''
+        self.artist_url: str = ''
+        self.publisher_url: str = ''
+        self.date: str = ''
+        self.track_number: int = 0
+        self.bpm: int = 0
 
     def get_artist(self):
         return self.artist
@@ -34,31 +46,42 @@ class MP3tags:
                 counterRemoved += 1
         return counterRemoved
 
+    def set_file(self, file):
+        self.file = file
+        if len(file):
+            return eyed3.load(file)
+        else:
+            return False
+
     def set_tags(self):
-        audiofile = eyed3.load(self.file)
+        audiofile = self.set_file(self.file)
+        # audiofile = eyed3.load(self.file)
         if (audiofile.tag == None):
             audiofile.initTag()
-        audiofile.tag.artist = "שם האומן"
-        audiofile.tag.album = "שם האלבום"
-        audiofile.tag.album_artist = "שם אומן באלבום"
-        audiofile.tag.title = "שם השיר"
-        audiofile.tag.composer = 'מלחין'
-        audiofile.tag.track_num = 1
-        audiofile.tag.recording_date = '2019'
-        audiofile.tag.publisher = 'לייבל'
-        audiofile.tag.genre = 'Pop'
-        audiofile.tag.bpm = 130
-        audiofile.tag.artist_url = 'https://GalSarig.com'
-        audiofile.tag.publisher_url = 'https://GalSarig.com'
-        audiofile.tag.copyright = 'all rights reserved'
-        audiofile.tag.language = 'Hebrew'
+        audiofile.tag.title = self.song_name
+        audiofile.tag.artist = self.artist
+        audiofile.tag.album = self.album_name
+        audiofile.tag.album_artist = self.album_artist
+        audiofile.tag.composer = self.composer
+        audiofile.tag.publisher = self.publisher
+        audiofile.tag.genre = self.genre
+        audiofile.tag.artist_url = self.artist_url
+        audiofile.tag.publisher_url = self.publisher_url
+        audiofile.tag.copyright = self.copyright
+        audiofile.tag.language = self.language
+        audiofile.tag.recording_date = self.date
+        if self.track_number:
+            audiofile.tag.track_num = self.track_number
+        if self.bpm:
+            audiofile.tag.bpm = self.bpm
+
         # self.remove_image(audiofile,'front')
         self.remove_all_images(audiofile)
         if len(self.image_front_cover):
             audiofile.tag.images.set(3, open(self.image_front_cover, 'rb').read(), 'image/jpeg', u'front')
         audiofile.tag.save()
         # edit_mp3()
-        return "ok"
+        return True
 
 
 mp3tags = MP3tags()
@@ -66,8 +89,9 @@ mp3tags.song_name = 'song name'
 mp3tags.artist = 'gal sarig'
 mp3tags.file = "song.mp3"
 mp3tags.image_front_cover = 'song2.jpg'
+mp3tags.genre = 'Pop'
 print(mp3tags.set_tags())
-print(mp3tags.artist)
+print(mp3tags.song_name)
 
 
 # remove all images
