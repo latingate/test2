@@ -81,7 +81,7 @@ def mp3edit_save():
     cell_classes = 'align-self-start'
 
     col_classes = {
-        3: 'text-start'
+        # 3: 'text-start'
         # text-start / text-end / text-center
     }
 
