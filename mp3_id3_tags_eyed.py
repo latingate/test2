@@ -85,10 +85,10 @@ class MP3tags:
 
 
 mp3tags = MP3tags()
-mp3tags.song_name = 'song name'
-mp3tags.artist = 'gal sarig'
 mp3tags.file = "song.mp3"
 mp3tags.image_front_cover = 'song2.jpg'
+mp3tags.song_name = 'song name'
+mp3tags.artist = 'gal sarig'
 mp3tags.genre = 'Pop'
 mp3tags.set_tags()
 
