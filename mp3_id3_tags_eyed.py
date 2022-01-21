@@ -90,8 +90,7 @@ mp3tags.artist = 'gal sarig'
 mp3tags.file = "song.mp3"
 mp3tags.image_front_cover = 'song2.jpg'
 mp3tags.genre = 'Pop'
-print(mp3tags.set_tags())
-print(mp3tags.song_name)
+mp3tags.set_tags()
 
 
 # remove all images
