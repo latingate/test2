@@ -21,15 +21,55 @@ class MP3tags:
     def get_artist(self):
         return self.artist
 
+    def remove_image(self,objMp3, desc):
+        if (objMp3.tag._images.remove(desc)):
+            return True
+        else:
+            return False
+
+    def remove_all_images(self,objMp3):
+        toRemove = [x.description for x in objMp3.tag.images]
+        counterRemoved = 0
+        for desc in toRemove:
+            if (objMp3.tag.images.remove(desc)):
+                counterRemoved += 1
+        return counterRemoved
+
     def set_tags(self):
         audiofile = eyed3.load(self.file)
-        return edit_mp3()
+        if (audiofile.tag == None):
+            audiofile.initTag()
+        audiofile.tag.artist = "שם האומן"
+        audiofile.tag.album = "שם האלבום"
+        audiofile.tag.album_artist = "שם אומן באלבום"
+        audiofile.tag.title = "שם השיר"
+        audiofile.tag.composer = 'מלחין'
+        audiofile.tag.track_num = 1
+        audiofile.tag.recording_date = '2019'
+        audiofile.tag.publisher = 'לייבל'
+        audiofile.tag.genre = 'Pop'
+        audiofile.tag.bpm = 130
+        audiofile.tag.artist_url = 'https://GalSarig.com'
+        audiofile.tag.publisher_url = 'https://GalSarig.com'
+        audiofile.tag.copyright = 'all rights reserved'
+        audiofile.tag.language = 'Hebrew'
+        # self.remove_image(audiofile,'front')
+        self.remove_all_images(audiofile)
+        if len(self.image_front_cover):
+            audiofile.tag.images.set(3, open(self.image_front_cover, 'rb').read(), 'image/jpeg', u'front')
+        audiofile.tag.save()
+        # edit_mp3()
+        return "ok"
+
 
 mp3tags = MP3tags()
 mp3tags.song_name = 'song name'
 mp3tags.artist = 'gal sarig'
+mp3tags.file = "song.mp3"
 mp3tags.image_front_cover = 'song2.jpg'
+print(mp3tags.set_tags())
 print(mp3tags.artist)
+
 
 # remove all images
 def removeAllImages(objMp3):
