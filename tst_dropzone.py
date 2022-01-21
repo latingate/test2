@@ -66,6 +66,27 @@ def mp3edit_save():
     artist = data.get('artist')
     print('song name:', song_name, 'artist', artist, 'erorr codes', session['error'], 'error messages',
           session['error_message'], 'error dictioanry', error)
+
+    header_data = ('name (english)', 'name (hebrew)', 'age')
+
+    rows_data = (
+        ('Gal Sarig', 'גל שריג', 54),
+        ('Sigal Lifshitz', 'סיגל ליפשיץ', 49),
+        ('Michal Sarig', 'מיכל שריג', 20),
+        ('Zohar Gofen', 'זהר גופן', 26)
+    )
+
+    table_classes = 'table-striped table-bordered table-hover'
+    header_classes = ' text-center'
+    row_classes = ''
+    cell_classes = ''
+
+    col_classes = {
+        1: 'text-start',
+        2: 'text-end',
+        3: 'text-center'
+    }
+
     session.clear()
     return render_template('tst_dropzone_results.html', song_name=song_name, artist=artist, mp3_file=mp3_file, error=error)
     # return render_template('update_confirmation.html', user='ok')
