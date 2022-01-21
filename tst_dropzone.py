@@ -64,25 +64,27 @@ def mp3edit_save():
     data = request.form
     song_name = data.get('song_name')
     artist = data.get('artist')
-    print('song name:', song_name, 'artist', artist, 'erorr codes', session['error'], 'error messages',
-          session['error_message'], 'error dictioanry', error)
+    # print('song name:', song_name, 'artist', artist, 'erorr codes', session['error'], 'error messages', session['error_message'], 'error dictioanry', error)
 
-    header_data = ()
+    header_data = ('', 'נתון נוכחי בקובץ ה-mp3', 'נתון חדש')
 
     rows_data = (
-        ('שם השיר', song_name),
-        ('שם האומן', artist)
+        ('שם השיר', '', song_name),
+        ('שם האומן', '', artist),
+        ('קובץ mp3', '', mp3_file),
+        ('שגיאות','',error)
     )
 
     table_classes = 'table-striped table-bordered table-hover'
-    header_classes = ' text-center'
+    header_classes = 'text-center'
     row_classes = ''
     cell_classes = ''
 
     col_classes = {
         1: 'text-start',
-        2: 'text-end',
-        3: 'text-center'
+        2: 'text-start',
+        3: 'text-start'
+        # text-start / text-end / text-center
     }
 
     session.clear()
