@@ -11,7 +11,8 @@ from random import random
 basedir = os.getcwd()
 upload_path = os.path.join(basedir, 'uploads')
 app = Flask(__name__)
-app.secret_key = 'caliy!DCB8927%^rufhjcnv374ytfu'
+app.secret_key = 'caliy!DCB8927d%^ruscvfhjcnv374ytfu' + str(int(random() * 10000))
+# session.clear()
 
 app.config.update(
     # DROPZONE_UPLOADED_PATH=os.path.join(basedir, 'uploads'),
@@ -28,6 +29,7 @@ app.config.update(
     DROPZONE_TIMEOUT=5 * 60 * 1000)
 
 dropzone = Dropzone(app)
+
 
 @app.route('/', methods=['POST', 'GET'])
 def upload():
@@ -53,15 +55,19 @@ def mp3edit_save():
     session['error'] = ['123']
     session['error_message'] = ['no error']
     if "mp3" not in session:
+        mp3_file=''
         session['error'].append(1)
         session['error_message'].append('No mp3 file found')
         error[1] = 'no mp3'
+    else:
+        mp3_file = session['mp3']
     data = request.form
     song_name = data.get('song_name')
     artist = data.get('artist')
-    print('song name:' , song_name, 'artist' , artist, 'erorr codes' , session['error'], 'error messages' , session['error_message'], 'error dictioanry', error)
-    # session.clear()
-    return render_template('tst_dropzone_results.html', song_name=song_name, artist=artist, error=error)
+    print('song name:', song_name, 'artist', artist, 'erorr codes', session['error'], 'error messages',
+          session['error_message'], 'error dictioanry', error)
+    session.clear()
+    return render_template('tst_dropzone_results.html', song_name=song_name, artist=artist, mp3_file=mp3_file, error=error)
     # return render_template('update_confirmation.html', user='ok')
 
 

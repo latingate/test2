@@ -1,7 +1,7 @@
 {% extends "base_template.html" %}
 
-{% set title = 'tst_dropzone mp3 tag edit' %}
-{% set page_header = 'tst_dropzone mp3 tag edit' %}
+{% set title = 'tst_dropzone mp3 tag edit - results' %}
+{% set page_header = 'tst_dropzone mp3 tag edit - results' %}
 
 {% block head_contents %}
 {% endblock head_contents %}
@@ -19,11 +19,23 @@
                 האומן:
                 {{ artist }}
                 <br/>
+                שם קובץ mp3:
+                {{ mp3_file }}
+                <br/>
+                session variable mp3 file:
+                {{ session['mp3'] }}
+                <br/>
                 שגיאות:
                 {{ error }}
+                <br/>
+                session variable error_message:
+                {{ session['error_message'] }}
+
 
             </div>
         </div>
     </div>
+
+{#    {{ session.clear }}#}
 
 {% endblock contents %}
