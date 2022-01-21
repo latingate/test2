@@ -10,7 +10,6 @@ from eyed3.id3.frames import ImageFrame
 # Another package:
 # https://mutagen.readthedocs.io/en/latest/
 
-
 class MP3tags:
     def __init__(self):
         self.file: str = ''
@@ -21,13 +20,13 @@ class MP3tags:
     def get_artist(self):
         return self.artist
 
-    def remove_image(self,objMp3, desc):
+    def remove_image(self, objMp3, desc):
         if (objMp3.tag._images.remove(desc)):
             return True
         else:
             return False
 
-    def remove_all_images(self,objMp3):
+    def remove_all_images(self, objMp3):
         toRemove = [x.description for x in objMp3.tag.images]
         counterRemoved = 0
         for desc in toRemove:
