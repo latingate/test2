@@ -25,8 +25,8 @@ class MP3tags:
         self.language: str = ''
         self.artist_url: str = ''
         self.publisher_url: str = ''
-        self.date: str = ''
-        self.track_number: int = 0
+        self.recording_date: str = ''
+        self.track_num: int = 0
         self.bpm: int = 0
 
     def get_artist(self):
@@ -53,14 +53,28 @@ class MP3tags:
         else:
             return False
 
+    def replace_None(self, s):
+        if s == None:
+            return ''
+        else:
+            return s
+
     def get_tags(self):
         audiofile = self.set_file(self.file)
         self.title = audiofile.tag.title
         self.artist = audiofile.tag.artist
         self.album = audiofile.tag.album
         self.album_artist = audiofile.tag.album_artist
+        self.composer = audiofile.tag.composer
+        self.publisher = audiofile.tag.publisher
         self.genre = audiofile.tag.genre
-
+        self.artist_url = self.replace_None(audiofile.tag.artist_url)
+        self.publisher_url = self.replace_None(audiofile.tag.publisher_url)
+        self.copyright = audiofile.tag.copyright
+        # self.language = self.replace_None(audiofile.tag.language)
+        self.recording_date = self.replace_None(audiofile.tag.recording_date)
+        self.track_num = audiofile.tag.track_num
+        self.bpm = audiofile.tag.bpm
 
     def set_tags(self):
         audiofile = self.set_file(self.file)
@@ -78,9 +92,9 @@ class MP3tags:
         audiofile.tag.publisher_url = self.publisher_url
         audiofile.tag.copyright = self.copyright
         audiofile.tag.language = self.language
-        audiofile.tag.recording_date = self.date
-        if self.track_number:
-            audiofile.tag.track_num = self.track_number
+        audiofile.tag.recording_date = self.recording_date
+        if self.track_num:
+            audiofile.tag.track_num = self.track_num
         if self.bpm:
             audiofile.tag.bpm = self.bpm
 
@@ -96,11 +110,10 @@ class MP3tags:
 mp3tags = MP3tags()
 mp3tags.file = "song.mp3"
 mp3tags.get_tags()
-print(mp3tags.genre)
 mp3tags.image_front_cover = 'song2.jpg'
 mp3tags.title = 'song name'
 mp3tags.artist = 'gal sarig'
-mp3tags.genre = 'pop' #or code 13
+mp3tags.genre = 'pop'  # or code 13
 # mp3tags.track_number=1
 mp3tags.set_tags()
 
