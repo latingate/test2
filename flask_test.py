@@ -182,7 +182,7 @@ def display_table():
     cell_classes = ''
 
     col_classes = {
-        1: 'text-start',
+        1: 'align-self-start',
         2: 'text-end',
         3: 'text-center'
     }

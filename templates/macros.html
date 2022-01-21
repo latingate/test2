@@ -1,5 +1,5 @@
 {% macro table_header(header_data, header_classes) %}
-    <thead>
+    <thead class="{{ header_classes }}">
     <tr>
         {% for header in header_data %}
             <th>{{ header }}</th>

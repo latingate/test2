@@ -76,13 +76,11 @@ def mp3edit_save():
     )
 
     table_classes = 'table-striped table-bordered table-hover'
-    header_classes = 'text-center'
+    header_classes = 'text-center bg-secondary bg-opacity-50'
     row_classes = ''
-    cell_classes = ''
+    cell_classes = 'align-self-start'
 
     col_classes = {
-        1: 'text-start',
-        2: 'text-start',
         3: 'text-start'
         # text-start / text-end / text-center
     }
