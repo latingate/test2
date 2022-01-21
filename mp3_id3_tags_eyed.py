@@ -90,6 +90,7 @@ mp3tags.image_front_cover = 'song2.jpg'
 mp3tags.song_name = 'song name'
 mp3tags.artist = 'gal sarig'
 mp3tags.genre = 'Pop'
+# mp3tags.track_number=1
 mp3tags.set_tags()
 
 
