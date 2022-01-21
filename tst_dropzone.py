@@ -72,7 +72,7 @@ def mp3edit_save():
         ('שם השיר', '', song_name),
         ('שם האומן', '', artist),
         ('קובץ mp3', '', mp3_file),
-        ('שגיאות','',error)
+        # ('שגיאות','',error)
     )
 
     table_classes = 'table-striped table-bordered table-hover'

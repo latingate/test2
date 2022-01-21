@@ -14,26 +14,10 @@
             <div class="col-3"></div>
             <div class="col-6">
                 {{ table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes) }}
-                <br/>
-                שם השיר:
-                {{ song_name }}
-                <br/>
-                האומן:
-                {{ artist }}
-                <br/>
-                שם קובץ mp3:
-                {{ mp3_file }}
-                <br/>
-                session variable mp3 file:
-                {{ session['mp3'] }}
-                <br/>
-                שגיאות:
-                {{ error }}
-                <br/>
-                session variable error_message:
-                {{ session['error_message'] }}
-
-
+                <div style="direction: ltr">
+                    Errors:
+                    <br/>
+                    {{ error }}</div>
             </div>
         </div>
     </div>
