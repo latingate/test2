@@ -1,0 +1,29 @@
+{% extends "base_template.html" %}
+
+{% set title = 'tst_dropzone mp3 tag edit' %}
+{% set page_header = 'tst_dropzone mp3 tag edit' %}
+
+{% block head_contents %}
+{% endblock head_contents %}
+
+{% block contents %}
+
+    <div class="container" style="direction: rtl;">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <br/>
+                שם השיר:
+                {{ song_name }}
+                <br/>
+                האומן:
+                {{ artist }}
+                <br/>
+                שגיאות:
+                {{ error }}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock contents %}
