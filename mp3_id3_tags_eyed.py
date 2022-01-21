@@ -13,11 +13,11 @@ from eyed3.id3.frames import ImageFrame
 class MP3tags:
     def __init__(self):
         self.file: str = ''
-        self.song_name: str = ''
+        self.title: str = ''
         self.artist: str = ''
         self.album_artist: str = ''
         self.image_front_cover: str = ''
-        self.album_name: str = ''
+        self.album: str = ''
         self.composer: str = ''
         self.publisher: str = ''
         self.genre: str = ''
@@ -53,14 +53,23 @@ class MP3tags:
         else:
             return False
 
+    def get_tags(self):
+        audiofile = self.set_file(self.file)
+        self.title = audiofile.tag.title
+        self.artist = audiofile.tag.artist
+        self.album = audiofile.tag.album
+        self.album_artist = audiofile.tag.album_artist
+        self.genre = audiofile.tag.genre
+
+
     def set_tags(self):
         audiofile = self.set_file(self.file)
         # audiofile = eyed3.load(self.file)
         if (audiofile.tag == None):
             audiofile.initTag()
-        audiofile.tag.title = self.song_name
+        audiofile.tag.title = self.title
         audiofile.tag.artist = self.artist
-        audiofile.tag.album = self.album_name
+        audiofile.tag.album = self.album
         audiofile.tag.album_artist = self.album_artist
         audiofile.tag.composer = self.composer
         audiofile.tag.publisher = self.publisher
@@ -86,10 +95,12 @@ class MP3tags:
 
 mp3tags = MP3tags()
 mp3tags.file = "song.mp3"
+mp3tags.get_tags()
+print(mp3tags.genre)
 mp3tags.image_front_cover = 'song2.jpg'
-mp3tags.song_name = 'song name'
+mp3tags.title = 'song name'
 mp3tags.artist = 'gal sarig'
-mp3tags.genre = 'Pop'
+mp3tags.genre = 'pop' #or code 13
 # mp3tags.track_number=1
 mp3tags.set_tags()
 
