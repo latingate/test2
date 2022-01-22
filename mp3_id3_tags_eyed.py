@@ -70,7 +70,10 @@ class MP3tags:
         self.album_artist = audiofile.tag.album_artist
         self.composer = audiofile.tag.composer
         self.publisher = audiofile.tag.publisher
-        self.genre = audiofile.tag.genre.name
+        if audiofile.tag.genre != None:
+            self.genre = audiofile.tag.genre.name
+        else:
+            self.genre = ''
         self.artist_url = none2empty(audiofile.tag.artist_url)
         self.publisher_url = none2empty(audiofile.tag.publisher_url)
         self.copyright = audiofile.tag.copyright
