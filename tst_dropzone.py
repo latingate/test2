@@ -69,8 +69,12 @@ def upload():
 @app.route("/mp3edit_save", methods=['POST'])
 def mp3edit_save():
     error = {}
-    session['error'] = ['123']
+    session['error'] = ['0']
     session['error_message'] = ['no error']
+    if 'tags_from_file' in session:
+        tags = session['tags_from_file']
+    else:
+        tags = {}
     if "mp3" not in session:
         mp3_file = ''
         session['error'].append(1)
@@ -86,8 +90,8 @@ def mp3edit_save():
     header_data = ('', 'נתון נוכחי בקובץ ה-mp3', 'נתון חדש')
 
     rows_data = (
-        ('שם השיר', '', title),
-        ('שם האומן', '', artist),
+        ('שם השיר', tags['title'], title),
+        ('שם האומן', tags['artist'] , artist),
         ('קובץ mp3', '', mp3_file),
         # ('שגיאות','',error)
     )
@@ -101,7 +105,6 @@ def mp3edit_save():
         # 3: 'text-start'
         # text-start / text-end / text-center
     }
-    tags = session['tags_from_file']
     session.clear()
     return render_template('tst_dropzone_results.html', title=title, artist=artist, mp3_file=mp3_file,
                            tags=tags,

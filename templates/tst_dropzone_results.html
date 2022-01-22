@@ -15,6 +15,12 @@
             <div class="col-6">
                 {{ table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes) }}
                 {{ tags['title'] }}
+
+                {% for key, value in tags.items() %}
+                    <h4>Key: {{ key }}</h4>
+                    <h5>Value: {{ value }}</h5>
+                {% endfor %}
+
                 <div style="direction: ltr">
                     Errors:
                     <br/>
