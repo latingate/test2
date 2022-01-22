@@ -9,21 +9,27 @@
 {% endmacro %}
 
 
-{% macro table_rows(rows_data, row_classes, cell_classes, col_classes) %}
+{% macro table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable) %}
     {% for row in rows_data %}
+        {% set row_number = loop.index %}
         <tr class="{{ row_classes }}">
             {% for cell in row %}
                 {% set col_number = loop.index %}
-                <td class="{{ cell_classes }} {{ col_classes[col_number] }}">{{ cell }}</td>
+                {% if (row_number in rows_contenteditable) or (col_number in cols_contenteditable) %}
+                    {% set content_editable = 'contenteditable=true' %}
+                {% else %}
+                    {% set content_editable = '' %}
+                {% endif %}
+                <td {{ content_editable }} class="{{ cell_classes }} {{ col_classes[col_number] }}">{{ cell }}</td>
             {% endfor %}
         </tr>
     {% endfor %}
 {% endmacro %}
 
 
-{% macro table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes) %}
+{% macro table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable) %}
     <table class="table {{ table_classes }}">
         {{ table_header(header_data, header_classes) }}
-        {{ table_rows(rows_data, row_classes, cell_classes,col_classes) }}
+        {{ table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable) }}
     </table>
 {% endmacro %}

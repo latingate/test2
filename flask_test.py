@@ -186,9 +186,12 @@ def display_table():
         2: 'text-end',
         3: 'text-center'
     }
+    cols_contenteditable = {1}
+    rows_contenteditable = {1,3}
+
     return render_template('table.html', header_data=header_data, rows_data=rows_data, table_classes=table_classes,
                            header_classes=header_classes, row_classes=row_classes, cell_classes=cell_classes,
-                           col_classes=col_classes)
+                           col_classes=col_classes, cols_contenteditable=cols_contenteditable, rows_contenteditable=rows_contenteditable)
 
 
 # Site Map

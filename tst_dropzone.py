@@ -102,8 +102,8 @@ def mp3edit_save():
         ('תאריך/שנת הקלטה', none2empty(tags['recording_date'])),
         ('זכויות', none2empty(tags['copyright'])),
         ('מפיץ', none2empty(tags['publisher'])),
-        ('אתר אינטרנט אומן',none2empty(tags['artist_url'])),
-        ('אתר אינטרנט מפיץ',none2empty(tags['artist_url'])),
+        ('אתר אינטרנט אומן', none2empty(tags['artist_url'])),
+        ('אתר אינטרנט מפיץ', none2empty(tags['artist_url'])),
         ('קובץ mp3', '', mp3_file),
         # ('שגיאות','',error)
     )
@@ -117,14 +117,16 @@ def mp3edit_save():
         # 3: 'text-start'
         # text-start / text-end / text-center
     }
+
+    rows_contenteditable = {}
+    cols_contenteditable = {3}
+
     session.clear()
-    return render_template('tst_dropzone_results.html', title=title, artist=artist, mp3_file=mp3_file,
-                           tags=tags,
+    return render_template('tst_dropzone_results.html', title=title, artist=artist, mp3_file=mp3_file, tags=tags,
                            error=error,
                            header_data=header_data, rows_data=rows_data, table_classes=table_classes,
                            header_classes=header_classes, row_classes=row_classes, cell_classes=cell_classes,
-                           col_classes=col_classes
-                           )
+                           col_classes=col_classes, cols_contenteditable=cols_contenteditable, rows_contenteditable=rows_contenteditable)
     # return render_template('update_confirmation.html', user='ok')
 
 
