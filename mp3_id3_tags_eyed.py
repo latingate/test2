@@ -1,5 +1,6 @@
 import eyed3
 from eyed3.id3.frames import ImageFrame
+from gs_functions import none2empty
 
 
 # source: https://eyed3.readthedocs.io/en/latest/modules.html
@@ -53,6 +54,7 @@ class MP3tags:
         else:
             return False
 
+    # not in use.. instead using none2empty from gs_functions
     def replace_None(self, s):
         if s == None:
             return ''
@@ -68,11 +70,11 @@ class MP3tags:
         self.composer = audiofile.tag.composer
         self.publisher = audiofile.tag.publisher
         self.genre = audiofile.tag.genre
-        self.artist_url = self.replace_None(audiofile.tag.artist_url)
-        self.publisher_url = self.replace_None(audiofile.tag.publisher_url)
+        self.artist_url = none2empty(audiofile.tag.artist_url)
+        self.publisher_url = none2empty(audiofile.tag.publisher_url)
         self.copyright = audiofile.tag.copyright
-        # self.language = self.replace_None(audiofile.tag.language)
-        self.recording_date = self.replace_None(audiofile.tag.recording_date)
+        # self.language = none2empty(audiofile.tag.language)
+        self.recording_date = none2empty(audiofile.tag.recording_date)
         self.track_num = audiofile.tag.track_num
         self.bpm = audiofile.tag.bpm
         return self
