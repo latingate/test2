@@ -22,7 +22,7 @@ class MP3tags:
         self.publisher: str = ''
         self.genre: str = ''
         self.copyright: str = ''
-        self.language: str = ''
+        # self.language: str = ''
         self.artist_url: str = ''
         self.publisher_url: str = ''
         self.recording_date: str = ''
@@ -91,12 +91,14 @@ class MP3tags:
         audiofile.tag.artist_url = self.artist_url
         audiofile.tag.publisher_url = self.publisher_url
         audiofile.tag.copyright = self.copyright
-        audiofile.tag.language = self.language
+        # audiofile.tag.language = self.language
         audiofile.tag.recording_date = self.recording_date
-        if self.track_num:
-            audiofile.tag.track_num = self.track_num
-        if self.bpm:
-            audiofile.tag.bpm = self.bpm
+        audiofile.tag.track_num = self.track_num
+        audiofile.tag.bpm = self.bpm
+        # if self.track_num:
+        #     audiofile.tag.track_num = self.track_num
+        # if self.bpm:
+        #     audiofile.tag.bpm = self.bpm
 
         # self.remove_image(audiofile,'front')
         self.remove_all_images(audiofile)
@@ -108,13 +110,17 @@ class MP3tags:
 
 
 mp3tags = MP3tags()
+
 mp3tags.file = "song.mp3"
-mp3tags.get_tags()
+# mp3tags.get_tags()
+# print('language',mp3tags.language)
+
 mp3tags.image_front_cover = 'song2.jpg'
 mp3tags.title = 'song name'
 mp3tags.artist = 'gal sarig'
+# mp3tags.language = 'Hebrew'
 mp3tags.genre = 'pop'  # or code 13
-# mp3tags.track_number=1
+# mp3tags.track_num = None
 mp3tags.set_tags()
 
 
