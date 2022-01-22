@@ -5,6 +5,7 @@ from flask_dropzone import Dropzone
 from datetime import datetime
 from random import random
 from mp3_id3_tags_eyed import MP3tags
+from gs_functions import none2empty
 import json
 
 mp3tags = MP3tags()
@@ -90,8 +91,10 @@ def mp3edit_save():
     header_data = ('', 'נתון נוכחי בקובץ ה-mp3', 'נתון חדש')
 
     rows_data = (
-        ('שם השיר', tags['title'], title),
-        ('שם האומן', tags['artist'] , artist),
+        ('שם השיר', none2empty(tags['title']), title),
+        ('שם האומן', none2empty(tags['artist']), artist),
+        ('מלחין', none2empty(tags['composer'])),
+        ('שם האומן של האלבום', none2empty(tags['album_artist'])),
         ('קובץ mp3', '', mp3_file),
         # ('שגיאות','',error)
     )

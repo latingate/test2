@@ -99,6 +99,13 @@ def decrypt_tring(string, key):
     return decrypted_string
 
 
+def none2empty(s):
+    if s == None:
+        return ''
+    else:
+        return s
+
+
 # read config file
 # ================
 
