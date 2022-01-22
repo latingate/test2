@@ -11,7 +11,7 @@ from gs_functions import none2empty
 # Another package:
 # https://mutagen.readthedocs.io/en/latest/
 
-class MP3tags:
+# class MP3tags:
     def __init__(self):
         self.file: str = ''
         self.title: str = ''
