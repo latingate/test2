@@ -26,7 +26,9 @@
                     {{ dropzone.config() }}
                     {#{{ dropzone.config(max_files=10, timeout=10000, default_message='גרור לפה קובץ mp3 וקובץ תמונה במידה ויש') }}#}
                 </div>
-
+                {% if session['tags_from_file'] is defined %}
+                    {{ session['tags_from_file']['artist'] }}
+                {% endif %}
                 <form id="edit_record" action="/mp3edit_save" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="song_name">שם השיר</label>

@@ -75,6 +75,7 @@ class MP3tags:
         self.recording_date = self.replace_None(audiofile.tag.recording_date)
         self.track_num = audiofile.tag.track_num
         self.bpm = audiofile.tag.bpm
+        return self
 
     def set_tags(self):
         audiofile = self.set_file(self.file)
@@ -116,10 +117,10 @@ mp3tags.file = "song.mp3"
 # print('language',mp3tags.language)
 
 mp3tags.image_front_cover = 'song2.jpg'
-mp3tags.title = 'song name'
+mp3tags.title = 'song title'
 mp3tags.artist = 'gal sarig'
 # mp3tags.language = 'Hebrew'
-mp3tags.genre = 'pop'  # or code 13
+mp3tags.genre = 'salsa'  # or code 13
 # mp3tags.track_num = None
 mp3tags.set_tags()
 
