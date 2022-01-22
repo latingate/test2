@@ -21,6 +21,7 @@ class MP3tags:
         self.album: str = ''
         self.composer: str = ''
         self.publisher: str = ''
+        # self.genre: eyed3.id3.Genre = None
         self.genre: str = ''
         self.copyright: str = ''
         # self.language: str = ''
@@ -69,7 +70,7 @@ class MP3tags:
         self.album_artist = audiofile.tag.album_artist
         self.composer = audiofile.tag.composer
         self.publisher = audiofile.tag.publisher
-        self.genre = audiofile.tag.genre
+        self.genre = audiofile.tag.genre.name
         self.artist_url = none2empty(audiofile.tag.artist_url)
         self.publisher_url = none2empty(audiofile.tag.publisher_url)
         self.copyright = audiofile.tag.copyright
@@ -115,8 +116,8 @@ class MP3tags:
 mp3tags = MP3tags()
 
 mp3tags.file = "song.mp3"
-# mp3tags.get_tags()
-# print('language',mp3tags.language)
+mp3tags.get_tags()
+# print('genre',(mp3tags.genre))
 
 mp3tags.image_front_cover = 'song2.jpg'
 mp3tags.title = 'song title'
