@@ -130,5 +130,7 @@ def mp3edit_save():
     # return render_template('update_confirmation.html', user='ok')
 
 
+#TODO edit cells inline // https://stackoverflow.com/questions/56290703/django-edit-html-table-rows-and-update-database/56291339
+
 if __name__ == '__main__':
     app.run(debug=True)
