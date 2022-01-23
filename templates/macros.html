@@ -9,7 +9,7 @@
 {% endmacro %}
 
 
-{% macro table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable) %}
+{% macro table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable, table_id) %}
     {% for row in rows_data %}
         {% set row_number = loop.index %}
         <tr class="{{ row_classes }}">
@@ -20,16 +20,18 @@
                 {% else %}
                     {% set content_editable = '' %}
                 {% endif %}
-                <td {{ content_editable }} class="{{ cell_classes }} {{ col_classes[col_number] }}">{{ cell }}</td>
+                <td id="{{ table_id + '-R' + row_number|string + 'C' + col_number|string }}" {{ content_editable }}
+                    class="{{ cell_classes }} {{ col_classes[col_number] }}">{{ cell }}</td>
             {% endfor %}
         </tr>
     {% endfor %}
 {% endmacro %}
 
 
-{% macro table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable) %}
-    <table class="table {{ table_classes }}">
+{% macro table_create(header_data, rows_data, table_classes, header_classes, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable, table_id='') %}
+    {% set table_id = 'table' if table_id == '' %}
+    <table class="table {{ table_classes }}" id="{{ table_id }}">
         {{ table_header(header_data, header_classes) }}
-        {{ table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable) }}
+        {{ table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable, table_id) }}
     </table>
 {% endmacro %}

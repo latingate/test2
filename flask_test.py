@@ -191,7 +191,7 @@ def display_table():
 
     return render_template('table.html', header_data=header_data, rows_data=rows_data, table_classes=table_classes,
                            header_classes=header_classes, row_classes=row_classes, cell_classes=cell_classes,
-                           col_classes=col_classes, cols_contenteditable=cols_contenteditable, rows_contenteditable=rows_contenteditable)
+                           col_classes=col_classes, cols_contenteditable=cols_contenteditable, rows_contenteditable=rows_contenteditable, table_id='tst_table')
 
 
 # Site Map
