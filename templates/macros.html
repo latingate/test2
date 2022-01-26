@@ -8,14 +8,14 @@
     </thead>
 {% endmacro %}
 
-
+{#Todo ALL (*) cols/rows not working#}
 {% macro table_rows(rows_data, row_classes, cell_classes, col_classes, cols_contenteditable, rows_contenteditable, table_id) %}
     {% for row in rows_data %}
         {% set row_number = loop.index %}
         <tr class="{{ row_classes }}">
             {% for cell in row %}
                 {% set col_number = loop.index %}
-                {% if (row_number in rows_contenteditable) or (col_number in cols_contenteditable) %}
+                {% if ((row_number in rows_contenteditable) or (rows_contenteditable == '*')) or ((col_number in cols_contenteditable) or (cols_contenteditable == '*'))%}
                     {% set content_editable = 'contenteditable=true' %}
                 {% else %}
                     {% set content_editable = '' %}
