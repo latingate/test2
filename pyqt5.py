@@ -27,6 +27,8 @@ root.move(500, 100)
 # to display text
 txt = QLabel('ברוכים הבאים!', parent=root)
 txt.move(200, 150)
+txt2 = QLabel('לחלון של גל שריג', parent=root)
+txt2.move(200, 180)
 
 # Show application's GUI
 root.show()

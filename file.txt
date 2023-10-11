@@ -1,4 +1,7 @@
 gal sarig this is a text file
 this is line number two
+THIS LINE IS ALL CAPITAL LETTERS
 the end
 I'm Gal Sarig
+גל שריג
+Bye
