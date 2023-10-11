@@ -15,13 +15,18 @@ from gs_functions import *
 
 app = Flask(__name__)
 
-
+# 127.0.0.1:5000/podcast
 @app.route('/podcast')
 def podcast_main():
     number_of_episodes = len(podcast.items)
     episodes = podcast.items
     print(podcast.items[1].enclosure_url)
     return render_template('podcast_main.html',number_of_episodes=number_of_episodes, episodes=episodes)
+
+
+@app.route('/')
+def podcast_home_page():
+    return ('this is the home page<br/>enter example internal page <a href=\'/podcast\'>/podcast</a>')
 
 
 if __name__ == '__main__':
