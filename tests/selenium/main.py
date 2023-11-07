@@ -47,27 +47,37 @@ class FacebookLogin():
         sleep(2)  # Wait for 2 seconds for the page to show up
 
 
-    def screenCapture(self):
+    def screenCapture(self,url):
+        print('starting screen capture')
+        # driver.get('https://reva5.co.il')
+        driver.get(url)
+        # driver.get('https://www.instagram.com/reel/CzV9RnRKEVO/?utm_source=ig_web_copy_link')
+        sleep(2)
+        driver.get_screenshot_as_file("screenshot.png")
+        driver.quit()
+        print("end screen capture")
 
 
 if __name__ == '__main__':
+    url = 'https://www.facebook.com/FolkMusicIsrael/posts/pfbid02QqJZ1xCueK69pA5DxknnZdWRT1HqYmzcSBj14G9suQZjVr9uxnfa48F811Ucn1bYl'
     print('trying to log in')
     # Enter your login credentials here
     try:
         fb_login = FacebookLogin(email='henriettamaragoza', password='fgal5313k', browser='chrome')
         fb_login.login()
+        fb_login.screenCapture(url)
     except Exception as error:
         print("An exception occurred:", error, type(error).__name__)  # An exception occurred: ZeroDivisionError
         exit()
     print('logged in')
 
 
-
-print('starting screen capture')
-# driver.get('https://reva5.co.il')
-driver.get('https://www.facebook.com/FolkMusicIsrael/posts/pfbid02QqJZ1xCueK69pA5DxknnZdWRT1HqYmzcSBj14G9suQZjVr9uxnfa48F811Ucn1bYl')
-# driver.get('https://www.instagram.com/reel/CzV9RnRKEVO/?utm_source=ig_web_copy_link')
-sleep(2)
-driver.get_screenshot_as_file("screenshot.png")
-driver.quit()
-print("end screen capture")
+#
+# print('starting screen capture')
+# # driver.get('https://reva5.co.il')
+# driver.get('https://www.facebook.com/FolkMusicIsrael/posts/pfbid02QqJZ1xCueK69pA5DxknnZdWRT1HqYmzcSBj14G9suQZjVr9uxnfa48F811Ucn1bYl')
+# # driver.get('https://www.instagram.com/reel/CzV9RnRKEVO/?utm_source=ig_web_copy_link')
+# sleep(2)
+# driver.get_screenshot_as_file("screenshot.png")
+# driver.quit()
+# print("end screen capture")
