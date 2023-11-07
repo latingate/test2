@@ -36,7 +36,7 @@ class FacebookLogin():
 
         # password_element = self.driver.find_element_by_id('pass')
         # password_element.send_keys(self.password)  # Give password as input too
-        password_element = self.driver.find_element('id', "password")
+        password_element = self.driver.find_element('id', "pass")
         password_element.send_keys(self.password)  # Give keyboard input
 
         # login_button = self.driver.find_element_by_id('loginbutton')
@@ -47,11 +47,14 @@ class FacebookLogin():
         sleep(2)  # Wait for 2 seconds for the page to show up
 
 
+    def screenCapture(self):
+
+
 if __name__ == '__main__':
     print('trying to log in')
     # Enter your login credentials here
     try:
-        fb_login = FacebookLogin(email='gal2016@latingate.com', password='fgal5313K!', browser='chrome')
+        fb_login = FacebookLogin(email='henriettamaragoza', password='fgal5313k', browser='chrome')
         fb_login.login()
     except Exception as error:
         print("An exception occurred:", error, type(error).__name__)  # An exception occurred: ZeroDivisionError
@@ -62,13 +65,9 @@ if __name__ == '__main__':
 
 print('starting screen capture')
 # driver.get('https://reva5.co.il')
-# driver.get('https://www.facebook.com/FolkMusicIsrael/posts/pfbid02QqJZ1xCueK69pA5DxknnZdWRT1HqYmzcSBj14G9suQZjVr9uxnfa48F811Ucn1bYl')
-driver.get('https://www.instagram.com/reel/CzV9RnRKEVO/?utm_source=ig_web_copy_link')
-sleep(1)
-
-
-
-
+driver.get('https://www.facebook.com/FolkMusicIsrael/posts/pfbid02QqJZ1xCueK69pA5DxknnZdWRT1HqYmzcSBj14G9suQZjVr9uxnfa48F811Ucn1bYl')
+# driver.get('https://www.instagram.com/reel/CzV9RnRKEVO/?utm_source=ig_web_copy_link')
+sleep(2)
 driver.get_screenshot_as_file("screenshot.png")
 driver.quit()
 print("end screen capture")
