@@ -86,7 +86,7 @@ if __name__ == '__main__':
         print(f"\nReport ID: {reportID}")
         print(f"Post URL: {postURL}")
         print(f"PictureFileNameAndPath: {PictureFileNameAndPath}")
-        print(f"\MD5 hash of the image: {md5_hash}")
+        print(f"MD5 hash of the image: {md5_hash}")
         print(f"SHA-256 hash of the image: {sha256_hash}")
 
     except Exception as error:
