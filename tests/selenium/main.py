@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.alert import Alert
-from webdriver_manager.firefox import GeckoDriverManager
+# from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from time import sleep
