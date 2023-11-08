@@ -4,8 +4,6 @@ from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from time import sleep
-import os
-import hashPictureFile # by GS
 
 options = webdriver.ChromeOptions()
 driver = webdriver.Chrome(options=options)
@@ -56,40 +54,21 @@ class FacebookLogin():
         self.driver.get_screenshot_as_file("screenshotPost_3_" + reportID + ".png")
 
 
-    def getPictureFileNameAndPath(self, reportID):
-        script_directory = os.path.dirname(os.path.realpath(__file__))
-        # return (f"The directory of the current script is: {script_directory}")
-        return (script_directory + '\screenshotPost_0_' + reportID + '.png')
-
-
     def dismissAlert(self):
         alert = Alert(self.driver)
         print(alert.text)
         alert.dismiss()
 
 
-if __name__ == '__main__':
-    postURL = 'https://www.facebook.com/rogerwaters/posts/pfbid02HRtXq4b5J1Jkx9Am3BvYprbhZESAMAsgafbD2SoDRCqNPCWoTYKBb98AxF5zV3yrl'
-    reportID = '28154'
-    try:
-        # fb_login = FacebookLogin(email='henriettamaragoza', password='fgal5313k', browser='chrome')
-        fb_login = FacebookLogin(email='galtmp@gmail.com', password='fgal5313k', browser='chrome')
-        PictureFileNameAndPath = fb_login.getPictureFileNameAndPath(reportID)
-        fb_login.login()
-        fb_login.screenCapture(postURL,reportID)
 
-        PictureFileNameAndPath = fb_login.getPictureFileNameAndPath(reportID)
-        # image_filepath = 'tst.png'
-        md5_hash = hashPictureFile.compute_hash(PictureFileNameAndPath, 'md5')
-        sha256_hash = hashPictureFile.compute_hash(PictureFileNameAndPath, 'sha256')
-
-        print(f"\nGenerate hash signature for a file - {PictureFileNameAndPath}")
-        print(f"MD5 hash of the image: {md5_hash}")
-        print(f"SHA-256 hash of the image: {sha256_hash}")
-
-    except Exception as error:
-        print("An exception occurred:", error, type(error).__name__)  # An exception occurred: ZeroDivisionError
-        exit()
-
-
+postURL = 'https://www.facebook.com/rogerwaters/posts/pfbid02HRtXq4b5J1Jkx9Am3BvYprbhZESAMAsgafbD2SoDRCqNPCWoTYKBb98AxF5zV3yrl'
+reportID = '28154'
+try:
+    # fb_login = FacebookLogin(email='henriettamaragoza', password='fgal5313k', browser='chrome')
+    fb_login = FacebookLogin(email='galtmp@gmail.com', password='fgal5313k', browser='chrome')
+    fb_login.login()
+    fb_login.screenCapture(postURL,reportID)
+except Exception as error:
+    print("An exception occurred:", error, type(error).__name__)  # An exception occurred: ZeroDivisionError
+    exit()
 
